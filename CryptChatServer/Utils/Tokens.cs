@@ -7,21 +7,21 @@ namespace CryptChatServer.Utils
 {
     class Tokens
     {
-        public static bool find_token(string token)
+        public static bool FindToken(string token)
         {
             var filter = Builders<User>.Filter.Eq(x => x.token, token);
             User document = Globals.USERS.Find(filter).First();
             return document != null;
         }
 
-        public static User get_token_owner(string token)
+        public static User GetTokenOwner(string token)
         {
             var filter = Builders<User>.Filter.Eq(x => x.token, token);
             User document = Globals.USERS.Find(filter).First();
             return document;
         }
 
-        public static bool check_ownership(string token, string username)
+        public static bool CheckOwnership(string token, string username)
         {
             var filter = Builders<User>.Filter.Eq(x => x.token, token) 
                        & Builders<User>.Filter.Eq(x => x.username, username);
@@ -29,7 +29,7 @@ namespace CryptChatServer.Utils
             return document != null;
         }
 
-        public static string get_token(ObjectId _id)
+        public static string GetToken(ObjectId _id)
         {
             var filter = Builders<User>.Filter.Eq(x => x._id, _id);
             User document = Globals.USERS.Find(filter).First();
