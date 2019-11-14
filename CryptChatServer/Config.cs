@@ -5,14 +5,14 @@ using YamlDotNet.Serialization;
 
 namespace CryptChatServer
 {
-    class Config
+    public class Config
     {
         public ServerConfig Server {get; set;}
         [YamlMember(Alias = "mongodb", ApplyNamingConventions = false)]
         public MongoDBConfig MongoDB { get; set; }
     }
 
-    class ServerConfig
+    public class ServerConfig
     {
         private string _bindIP = "0.0.0.0";
         [YamlMember(Alias = "bind_ip", ApplyNamingConventions = false)]
@@ -41,7 +41,7 @@ namespace CryptChatServer
             }
         }
     }
-    class MongoDBConfig
+    public class MongoDBConfig
     {
         private string _host = "127.0.0.1";
         public string Host
