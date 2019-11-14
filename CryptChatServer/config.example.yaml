@@ -1,0 +1,9 @@
+﻿server:
+    port: 55132
+    bind_ip: 0.0.0.0
+mongodb:
+    port: 27017
+    user: user
+    passwd: password
+    host: 127.0.0.1
+    database: database
