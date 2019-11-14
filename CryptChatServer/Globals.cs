@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using System.Collections.Concurrent;
 
 namespace CryptChatServer
 {
@@ -10,5 +11,7 @@ namespace CryptChatServer
         public static IMongoCollection<Types.User> USERS { get; set; }
         public static IMongoCollection<Types.Chat> CHATS { get; set; }
         public static IMongoCollection<Types.Message> MESSAGES { get; set; }
+
+        public static ConcurrentDictionary<string, object> CLIENTS = new ConcurrentDictionary<string, object>();
     }
 }
