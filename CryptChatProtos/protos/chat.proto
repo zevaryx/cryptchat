@@ -1,0 +1,20 @@
+﻿syntax = "proto3";
+package cryptchatprotos.responses.chat;
+
+option csharp_namespace = "CryptChatProtos.Responses.Chat";
+
+message QueueResponse {
+	repeated string deleted = 1;
+	repeated string edited = 2;
+	repeated string resync = 3;
+};
+
+message ChatResponse {
+	string _id = 1;
+	repeated string members = 2;
+	int32 msg_count = 3;
+};
+
+message ChatListResponse {
+	repeated ChatResponse chats = 1;
+};

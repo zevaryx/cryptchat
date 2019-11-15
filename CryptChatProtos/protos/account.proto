@@ -1,0 +1,8 @@
+﻿syntax = "proto3";
+package cryptchatprotos.responses.account;
+
+option csharp_namespace = "CryptChatProtos.Responses.Account";
+
+message ChangePasswordResponse {
+	string token = 1;
+};

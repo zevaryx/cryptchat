@@ -20,6 +20,8 @@ namespace CryptChatServer
                 Environment.Exit(1);
             }
             init_mongo();
+
+            CryptChatProtos.Responses.Response response = new CryptChatProtos.Responses.Response();
         }
 
         static void init_mongo()

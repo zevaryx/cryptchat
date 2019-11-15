@@ -1,0 +1,37 @@
+﻿syntax = "proto3";
+package cryptchatprotos.responses.message;
+
+option csharp_namespace = "CryptChatProtos.Responses.Message";
+
+message MessageResponse {
+	string _id = 1;
+	string chat = 2;
+	string message = 3;
+	string key = 4;
+	string signature = 5;
+	double timestamp = 6;
+	string sender = 7;
+	bool edited = 8;
+	double edited_at = 9;
+	string file = 10;
+};
+
+message MessageListResponse {
+	repeated MessageResponse messages = 1;
+};
+
+message SendMessageResponse {
+	string _id = 1;
+	string chat = 2;
+	double timestamp = 3;
+};
+
+message EditMessageResponse {
+	bool edited = 1;
+	double edited_at = 2;
+	string _id = 3;
+};
+
+message DeleteMessageResponse {
+	string status = 1;
+};

@@ -1,0 +1,6 @@
+﻿syntax = "proto3";
+package cryptchatprotos;
+
+import public "responses.proto";
+
+option csharp_namespace = "CryptChatProtos";
