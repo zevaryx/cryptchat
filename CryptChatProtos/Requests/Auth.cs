@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CryptChatProtos.Responses.Auth {
+namespace CryptChatProtos.Requests.Auth {
 
   /// <summary>Holder for reflection information generated from auth.proto</summary>
   public static partial class AuthReflection {
@@ -24,36 +24,35 @@ namespace CryptChatProtos.Responses.Auth {
     static AuthReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgphdXRoLnByb3RvEh5jcnlwdGNoYXRwcm90b3MucmVzcG9uc2VzLmF1dGgi",
-            "HAoMU2FsdFJlc3BvbnNlEgwKBHNhbHQYASABKAkiTQoNTG9naW5SZXNwb25z",
-            "ZRILCgNfaWQYASABKAkSEAoIdXNlcm5hbWUYAiABKAkSDgoGcHVia2V5GAMg",
-            "ASgJEg0KBXRva2VuGAQgASgJIjAKDFVzZXJSZXNwb25zZRIQCgh1c2VybmFt",
-            "ZRgBIAEoCRIOCgZwdWJrZXkYAiABKAkiXgoQUmVnaXN0ZXJSZXNwb25zZRIL",
-            "CgNfaWQYASABKAkSEAoIdXNlcm5hbWUYAiABKAkSDgoGcHVia2V5GAMgASgJ",
-            "Eg0KBXRva2VuGAQgASgJEgwKBHNhbHQYBSABKAlCIaoCHkNyeXB0Q2hhdFBy",
-            "b3Rvcy5SZXNwb25zZXMuQXV0aGIGcHJvdG8z"));
+            "CgphdXRoLnByb3RvEh1jcnlwdGNoYXRwcm90b3MucmVxdWVzdHMuYXV0aCIf",
+            "CgtTYWx0UmVxdWVzdBIQCgh1c2VybmFtZRgBIAEoCSIuCgxMb2dpblJlcXVl",
+            "c3QSEAoIdXNlcm5hbWUYASABKAkSDAoEaGFzaBgCIAEoCSIfCgtVc2VyUmVx",
+            "dWVzdBIQCgh1c2VybmFtZRgBIAEoCSJPCg9SZWdpc3RlclJlcXVlc3QSEAoI",
+            "dXNlcm5hbWUYASABKAkSDAoEaGFzaBgCIAEoCRIOCgZwdWJrZXkYAyABKAkS",
+            "DAoEc2FsdBgEIAEoCUIgqgIdQ3J5cHRDaGF0UHJvdG9zLlJlcXVlc3RzLkF1",
+            "dGhiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.SaltResponse), global::CryptChatProtos.Responses.Auth.SaltResponse.Parser, new[]{ "Salt" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.LoginResponse), global::CryptChatProtos.Responses.Auth.LoginResponse.Parser, new[]{ "Id", "Username", "Pubkey", "Token" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.UserResponse), global::CryptChatProtos.Responses.Auth.UserResponse.Parser, new[]{ "Username", "Pubkey" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.RegisterResponse), global::CryptChatProtos.Responses.Auth.RegisterResponse.Parser, new[]{ "Id", "Username", "Pubkey", "Token", "Salt" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Auth.SaltRequest), global::CryptChatProtos.Requests.Auth.SaltRequest.Parser, new[]{ "Username" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Auth.LoginRequest), global::CryptChatProtos.Requests.Auth.LoginRequest.Parser, new[]{ "Username", "Hash" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Auth.UserRequest), global::CryptChatProtos.Requests.Auth.UserRequest.Parser, new[]{ "Username" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Auth.RegisterRequest), global::CryptChatProtos.Requests.Auth.RegisterRequest.Parser, new[]{ "Username", "Hash", "Pubkey", "Salt" }, null, null, null)
           }));
     }
     #endregion
 
   }
   #region Messages
-  public sealed partial class SaltResponse : pb::IMessage<SaltResponse> {
-    private static readonly pb::MessageParser<SaltResponse> _parser = new pb::MessageParser<SaltResponse>(() => new SaltResponse());
+  public sealed partial class SaltRequest : pb::IMessage<SaltRequest> {
+    private static readonly pb::MessageParser<SaltRequest> _parser = new pb::MessageParser<SaltRequest>(() => new SaltRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<SaltResponse> Parser { get { return _parser; } }
+    public static pb::MessageParser<SaltRequest> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CryptChatProtos.Responses.Auth.AuthReflection.Descriptor.MessageTypes[0]; }
+      get { return global::CryptChatProtos.Requests.Auth.AuthReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -62,364 +61,21 @@ namespace CryptChatProtos.Responses.Auth {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public SaltResponse() {
+    public SaltRequest() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public SaltResponse(SaltResponse other) : this() {
-      salt_ = other.salt_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public SaltResponse Clone() {
-      return new SaltResponse(this);
-    }
-
-    /// <summary>Field number for the "salt" field.</summary>
-    public const int SaltFieldNumber = 1;
-    private string salt_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Salt {
-      get { return salt_; }
-      set {
-        salt_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as SaltResponse);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(SaltResponse other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Salt != other.Salt) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Salt.Length != 0) hash ^= Salt.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Salt.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Salt);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Salt.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Salt);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(SaltResponse other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Salt.Length != 0) {
-        Salt = other.Salt;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            Salt = input.ReadString();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
-    private static readonly pb::MessageParser<LoginResponse> _parser = new pb::MessageParser<LoginResponse>(() => new LoginResponse());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<LoginResponse> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::CryptChatProtos.Responses.Auth.AuthReflection.Descriptor.MessageTypes[1]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public LoginResponse() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public LoginResponse(LoginResponse other) : this() {
-      Id_ = other.Id_;
+    public SaltRequest(SaltRequest other) : this() {
       username_ = other.username_;
-      pubkey_ = other.pubkey_;
-      token_ = other.token_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public LoginResponse Clone() {
-      return new LoginResponse(this);
-    }
-
-    /// <summary>Field number for the "_id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private string Id_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Id {
-      get { return Id_; }
-      set {
-        Id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "username" field.</summary>
-    public const int UsernameFieldNumber = 2;
-    private string username_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Username {
-      get { return username_; }
-      set {
-        username_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "pubkey" field.</summary>
-    public const int PubkeyFieldNumber = 3;
-    private string pubkey_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Pubkey {
-      get { return pubkey_; }
-      set {
-        pubkey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "token" field.</summary>
-    public const int TokenFieldNumber = 4;
-    private string token_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Token {
-      get { return token_; }
-      set {
-        token_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as LoginResponse);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(LoginResponse other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Id != other.Id) return false;
-      if (Username != other.Username) return false;
-      if (Pubkey != other.Pubkey) return false;
-      if (Token != other.Token) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Id.Length != 0) hash ^= Id.GetHashCode();
-      if (Username.Length != 0) hash ^= Username.GetHashCode();
-      if (Pubkey.Length != 0) hash ^= Pubkey.GetHashCode();
-      if (Token.Length != 0) hash ^= Token.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Id.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Id);
-      }
-      if (Username.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Username);
-      }
-      if (Pubkey.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Pubkey);
-      }
-      if (Token.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Token);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Id.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
-      }
-      if (Username.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Username);
-      }
-      if (Pubkey.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Pubkey);
-      }
-      if (Token.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Token);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(LoginResponse other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Id.Length != 0) {
-        Id = other.Id;
-      }
-      if (other.Username.Length != 0) {
-        Username = other.Username;
-      }
-      if (other.Pubkey.Length != 0) {
-        Pubkey = other.Pubkey;
-      }
-      if (other.Token.Length != 0) {
-        Token = other.Token;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            Id = input.ReadString();
-            break;
-          }
-          case 18: {
-            Username = input.ReadString();
-            break;
-          }
-          case 26: {
-            Pubkey = input.ReadString();
-            break;
-          }
-          case 34: {
-            Token = input.ReadString();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class UserResponse : pb::IMessage<UserResponse> {
-    private static readonly pb::MessageParser<UserResponse> _parser = new pb::MessageParser<UserResponse>(() => new UserResponse());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<UserResponse> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::CryptChatProtos.Responses.Auth.AuthReflection.Descriptor.MessageTypes[2]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UserResponse() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UserResponse(UserResponse other) : this() {
-      username_ = other.username_;
-      pubkey_ = other.pubkey_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UserResponse Clone() {
-      return new UserResponse(this);
+    public SaltRequest Clone() {
+      return new SaltRequest(this);
     }
 
     /// <summary>Field number for the "username" field.</summary>
@@ -433,24 +89,13 @@ namespace CryptChatProtos.Responses.Auth {
       }
     }
 
-    /// <summary>Field number for the "pubkey" field.</summary>
-    public const int PubkeyFieldNumber = 2;
-    private string pubkey_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Pubkey {
-      get { return pubkey_; }
-      set {
-        pubkey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as UserResponse);
+      return Equals(other as SaltRequest);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(UserResponse other) {
+    public bool Equals(SaltRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -458,7 +103,6 @@ namespace CryptChatProtos.Responses.Auth {
         return true;
       }
       if (Username != other.Username) return false;
-      if (Pubkey != other.Pubkey) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -466,7 +110,6 @@ namespace CryptChatProtos.Responses.Auth {
     public override int GetHashCode() {
       int hash = 1;
       if (Username.Length != 0) hash ^= Username.GetHashCode();
-      if (Pubkey.Length != 0) hash ^= Pubkey.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -484,9 +127,152 @@ namespace CryptChatProtos.Responses.Auth {
         output.WriteRawTag(10);
         output.WriteString(Username);
       }
-      if (Pubkey.Length != 0) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Username.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Username);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(SaltRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Username.Length != 0) {
+        Username = other.Username;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Username = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class LoginRequest : pb::IMessage<LoginRequest> {
+    private static readonly pb::MessageParser<LoginRequest> _parser = new pb::MessageParser<LoginRequest>(() => new LoginRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<LoginRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::CryptChatProtos.Requests.Auth.AuthReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public LoginRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public LoginRequest(LoginRequest other) : this() {
+      username_ = other.username_;
+      hash_ = other.hash_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public LoginRequest Clone() {
+      return new LoginRequest(this);
+    }
+
+    /// <summary>Field number for the "username" field.</summary>
+    public const int UsernameFieldNumber = 1;
+    private string username_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Username {
+      get { return username_; }
+      set {
+        username_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "hash" field.</summary>
+    public const int HashFieldNumber = 2;
+    private string hash_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Hash {
+      get { return hash_; }
+      set {
+        hash_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as LoginRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(LoginRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Username != other.Username) return false;
+      if (Hash != other.Hash) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Username.Length != 0) hash ^= Username.GetHashCode();
+      if (Hash.Length != 0) hash ^= Hash.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Username.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Username);
+      }
+      if (Hash.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(Pubkey);
+        output.WriteString(Hash);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -499,8 +285,8 @@ namespace CryptChatProtos.Responses.Auth {
       if (Username.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Username);
       }
-      if (Pubkey.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Pubkey);
+      if (Hash.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Hash);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -509,15 +295,15 @@ namespace CryptChatProtos.Responses.Auth {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(UserResponse other) {
+    public void MergeFrom(LoginRequest other) {
       if (other == null) {
         return;
       }
       if (other.Username.Length != 0) {
         Username = other.Username;
       }
-      if (other.Pubkey.Length != 0) {
-        Pubkey = other.Pubkey;
+      if (other.Hash.Length != 0) {
+        Hash = other.Hash;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -535,7 +321,7 @@ namespace CryptChatProtos.Responses.Auth {
             break;
           }
           case 18: {
-            Pubkey = input.ReadString();
+            Hash = input.ReadString();
             break;
           }
         }
@@ -544,15 +330,15 @@ namespace CryptChatProtos.Responses.Auth {
 
   }
 
-  public sealed partial class RegisterResponse : pb::IMessage<RegisterResponse> {
-    private static readonly pb::MessageParser<RegisterResponse> _parser = new pb::MessageParser<RegisterResponse>(() => new RegisterResponse());
+  public sealed partial class UserRequest : pb::IMessage<UserRequest> {
+    private static readonly pb::MessageParser<UserRequest> _parser = new pb::MessageParser<UserRequest>(() => new UserRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<RegisterResponse> Parser { get { return _parser; } }
+    public static pb::MessageParser<UserRequest> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CryptChatProtos.Responses.Auth.AuthReflection.Descriptor.MessageTypes[3]; }
+      get { return global::CryptChatProtos.Requests.Auth.AuthReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -561,46 +347,174 @@ namespace CryptChatProtos.Responses.Auth {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RegisterResponse() {
+    public UserRequest() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RegisterResponse(RegisterResponse other) : this() {
-      Id_ = other.Id_;
+    public UserRequest(UserRequest other) : this() {
       username_ = other.username_;
-      pubkey_ = other.pubkey_;
-      token_ = other.token_;
-      salt_ = other.salt_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RegisterResponse Clone() {
-      return new RegisterResponse(this);
-    }
-
-    /// <summary>Field number for the "_id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private string Id_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Id {
-      get { return Id_; }
-      set {
-        Id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
+    public UserRequest Clone() {
+      return new UserRequest(this);
     }
 
     /// <summary>Field number for the "username" field.</summary>
-    public const int UsernameFieldNumber = 2;
+    public const int UsernameFieldNumber = 1;
     private string username_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Username {
       get { return username_; }
       set {
         username_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as UserRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(UserRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Username != other.Username) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Username.Length != 0) hash ^= Username.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Username.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Username);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Username.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Username);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(UserRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Username.Length != 0) {
+        Username = other.Username;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Username = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class RegisterRequest : pb::IMessage<RegisterRequest> {
+    private static readonly pb::MessageParser<RegisterRequest> _parser = new pb::MessageParser<RegisterRequest>(() => new RegisterRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RegisterRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::CryptChatProtos.Requests.Auth.AuthReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RegisterRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RegisterRequest(RegisterRequest other) : this() {
+      username_ = other.username_;
+      hash_ = other.hash_;
+      pubkey_ = other.pubkey_;
+      salt_ = other.salt_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RegisterRequest Clone() {
+      return new RegisterRequest(this);
+    }
+
+    /// <summary>Field number for the "username" field.</summary>
+    public const int UsernameFieldNumber = 1;
+    private string username_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Username {
+      get { return username_; }
+      set {
+        username_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "hash" field.</summary>
+    public const int HashFieldNumber = 2;
+    private string hash_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Hash {
+      get { return hash_; }
+      set {
+        hash_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -615,19 +529,8 @@ namespace CryptChatProtos.Responses.Auth {
       }
     }
 
-    /// <summary>Field number for the "token" field.</summary>
-    public const int TokenFieldNumber = 4;
-    private string token_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Token {
-      get { return token_; }
-      set {
-        token_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "salt" field.</summary>
-    public const int SaltFieldNumber = 5;
+    public const int SaltFieldNumber = 4;
     private string salt_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Salt {
@@ -639,21 +542,20 @@ namespace CryptChatProtos.Responses.Auth {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as RegisterResponse);
+      return Equals(other as RegisterRequest);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(RegisterResponse other) {
+    public bool Equals(RegisterRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Id != other.Id) return false;
       if (Username != other.Username) return false;
+      if (Hash != other.Hash) return false;
       if (Pubkey != other.Pubkey) return false;
-      if (Token != other.Token) return false;
       if (Salt != other.Salt) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -661,10 +563,9 @@ namespace CryptChatProtos.Responses.Auth {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (Username.Length != 0) hash ^= Username.GetHashCode();
+      if (Hash.Length != 0) hash ^= Hash.GetHashCode();
       if (Pubkey.Length != 0) hash ^= Pubkey.GetHashCode();
-      if (Token.Length != 0) hash ^= Token.GetHashCode();
       if (Salt.Length != 0) hash ^= Salt.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -679,24 +580,20 @@ namespace CryptChatProtos.Responses.Auth {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Id.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Id);
-      }
       if (Username.Length != 0) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(10);
         output.WriteString(Username);
+      }
+      if (Hash.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Hash);
       }
       if (Pubkey.Length != 0) {
         output.WriteRawTag(26);
         output.WriteString(Pubkey);
       }
-      if (Token.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Token);
-      }
       if (Salt.Length != 0) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(34);
         output.WriteString(Salt);
       }
       if (_unknownFields != null) {
@@ -707,17 +604,14 @@ namespace CryptChatProtos.Responses.Auth {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Id.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
-      }
       if (Username.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Username);
       }
+      if (Hash.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Hash);
+      }
       if (Pubkey.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Pubkey);
-      }
-      if (Token.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Token);
       }
       if (Salt.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Salt);
@@ -729,21 +623,18 @@ namespace CryptChatProtos.Responses.Auth {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(RegisterResponse other) {
+    public void MergeFrom(RegisterRequest other) {
       if (other == null) {
         return;
-      }
-      if (other.Id.Length != 0) {
-        Id = other.Id;
       }
       if (other.Username.Length != 0) {
         Username = other.Username;
       }
+      if (other.Hash.Length != 0) {
+        Hash = other.Hash;
+      }
       if (other.Pubkey.Length != 0) {
         Pubkey = other.Pubkey;
-      }
-      if (other.Token.Length != 0) {
-        Token = other.Token;
       }
       if (other.Salt.Length != 0) {
         Salt = other.Salt;
@@ -760,11 +651,11 @@ namespace CryptChatProtos.Responses.Auth {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Id = input.ReadString();
+            Username = input.ReadString();
             break;
           }
           case 18: {
-            Username = input.ReadString();
+            Hash = input.ReadString();
             break;
           }
           case 26: {
@@ -772,10 +663,6 @@ namespace CryptChatProtos.Responses.Auth {
             break;
           }
           case 34: {
-            Token = input.ReadString();
-            break;
-          }
-          case 42: {
             Salt = input.ReadString();
             break;
           }

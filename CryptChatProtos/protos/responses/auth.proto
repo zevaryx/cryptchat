@@ -1,0 +1,28 @@
+﻿syntax = "proto3";
+package cryptchatprotos.responses.auth;
+
+option csharp_namespace = "CryptChatProtos.Responses.Auth";
+
+message SaltResponse {
+	string salt = 1;
+};
+
+message LoginResponse {
+	string _id = 1;
+	string username = 2;
+	string pubkey = 3;
+	string token = 4;
+};
+
+message UserResponse {
+	string username = 1;
+	string pubkey = 2;
+};
+
+message RegisterResponse {
+	string _id = 1;
+	string username = 2;
+	string pubkey = 3;
+	string token = 4;
+	string salt = 5;
+};

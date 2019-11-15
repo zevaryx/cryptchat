@@ -4,7 +4,14 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
+using Google.Protobuf;
 using MongoDB.Bson;
+
+using CryptChatProtos.Responses;
+using CryptChatProtos.Responses.Message;
+using CryptChatProtos.Responses.Chat;
+using CryptChatProtos.Responses.Auth;
+using CryptChatProtos.Responses.Account;
 
 namespace CryptChatServer
 {
@@ -54,7 +61,6 @@ namespace CryptChatServer
         {
             TcpClient client = (TcpClient)obj;
             var stream = client.GetStream();
-
             string data = "";
             byte[] buffer = new byte[512];
             int i;
@@ -66,6 +72,9 @@ namespace CryptChatServer
                     {
                         data += Encoding.ASCII.GetString(buffer, 0, i);
                     }
+                    Response response = new Response();
+                    byte[] output = response.ToByteArray();
+                    stream.Write(output, 0, output.Length);
                 }
             }
             catch (Exception e)

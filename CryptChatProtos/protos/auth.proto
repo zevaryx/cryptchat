@@ -1,4 +1,0 @@
-﻿syntax = "proto3";
-package cryptchatprotos.responses.auth;
-
-option csharp_namespace = "CryptChatProtos.Responses.Auth";

@@ -1,0 +1,24 @@
+﻿syntax = "proto3";
+package cryptchatprotos.requests.chat;
+
+option csharp_namespace = "CryptChatProtos.Requests.Chat";
+
+message QueueRequest {
+	string token = 1;
+	string _id = 2;
+};
+
+message ChatRequest {
+	string token = 1;
+	string _id = 2;
+};
+
+message AllChatRequest {
+	string token = 1;
+};
+
+message NewRequest {
+	string token = 1;
+	string _id = 2;
+	double oldest = 3;
+};
