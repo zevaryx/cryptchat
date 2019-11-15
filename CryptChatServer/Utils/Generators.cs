@@ -12,7 +12,7 @@ namespace CryptChatServer.Utils
             return new Ulid().ToString();
         }
 
-        public static string GenerateSID()
+        public static string GenerateCID()
         {
             return GenerateToken();
         }

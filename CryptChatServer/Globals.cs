@@ -13,5 +13,6 @@ namespace CryptChatServer
         public static IMongoCollection<Types.Message> MESSAGES { get; set; }
 
         public static ConcurrentDictionary<string, object> CLIENTS = new ConcurrentDictionary<string, object>();
+        public static ConcurrentDictionary<string, string> SIDS = new ConcurrentDictionary<string, string>();
     }
 }

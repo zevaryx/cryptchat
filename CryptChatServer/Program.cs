@@ -6,9 +6,19 @@ namespace CryptChatServer
 {
     class Program
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         static void Main(string[] args)
         {
-            Globals.CONFIG = FileIO.GetConfigFromFile();
+            Logger.Debug("Getting config...");
+            try
+            {
+                Globals.CONFIG = FileIO.GetConfigFromFile();
+            }
+            catch (Exception e)
+            {
+                Logger.Fatal($"Loading config failed. Reason: {e.Message}");
+                Environment.Exit(1);
+            }
             init_mongo();
         }
 

@@ -10,9 +10,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.10.1" />
     <PackageReference Include="MongoDB.Driver" Version="2.9.3" />
+    <PackageReference Include="NLog" Version="4.6.8" />
     <PackageReference Include="Ulid" Version="0.1.8" />
     <PackageReference Include="YamlDotNet" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

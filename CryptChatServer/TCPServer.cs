@@ -4,11 +4,14 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
+using MongoDB.Bson;
+
 namespace CryptChatServer
 {
     // https://codinginfinite.com/multi-threaded-tcp-server-core-example-csharp/
     class TCPServer
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private TcpListener server = null;
 
         public TCPServer(string ip, ushort port)
@@ -26,21 +29,51 @@ namespace CryptChatServer
                 while (true)
                 {
                     TcpClient client = server.AcceptTcpClient();
-                    Thread t = new Thread(new ParameterizedThreadStart(HandleDevice));
-                    t.Start(client);
+                    string cid = Utils.Generators.GenerateCID();
+                    Logger.Debug($"Client joined with CID of {cid}");
+                    bool added = Globals.CLIENTS.TryAdd(cid, client);
+                    if (added)
+                    {
+                        Thread t = new Thread(_ => HandleDevice(client, cid));
+                        t.Start();
+                    }
+                    else
+                    {
+                        Logger.Error($"Failed to add new client with CID {cid}");
+                    }
                 }
             }
             catch (SocketException e)
             {
-                Console.WriteLine($"SocketException: {e}");
+                Logger.Fatal($"SocketException: {e}");
                 server.Stop();
             }
         }
 
-        public void HandleDevice(object obj)
+        public void HandleDevice(object obj, string cid)
         {
             TcpClient client = (TcpClient)obj;
             var stream = client.GetStream();
+
+            string data = "";
+            byte[] buffer = new byte[512];
+            int i;
+            try
+            {
+                while (client.Connected)
+                {
+                    while ((i = stream.Read(buffer, 0, buffer.Length)) != 0)
+                    {
+                        data += Encoding.ASCII.GetString(buffer, 0, i);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.Error($"Client {cid} died. Reason: {e.Message}");
+            }
+            if (client.Connected)
+                client.Close();
         }
     }
 }
