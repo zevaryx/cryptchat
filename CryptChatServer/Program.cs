@@ -21,7 +21,10 @@ namespace CryptChatServer
             }
             init_mongo();
 
-            CryptChatProtos.Responses.Response response = new CryptChatProtos.Responses.Response();
+            foreach (var x in CryptChatProtos.Requests.Message.MessageReflection.Descriptor.MessageTypes)
+            {
+                Console.WriteLine(x.Name);
+            }
         }
 
         static void init_mongo()

@@ -26,16 +26,16 @@ namespace CryptChatProtos.Requests.Chat {
           string.Concat(
             "CgpjaGF0LnByb3RvEh1jcnlwdGNoYXRwcm90b3MucmVxdWVzdHMuY2hhdCIq",
             "CgxRdWV1ZVJlcXVlc3QSDQoFdG9rZW4YASABKAkSCwoDX2lkGAIgASgJIikK",
-            "C0NoYXRSZXF1ZXN0Eg0KBXRva2VuGAEgASgJEgsKA19pZBgCIAEoCSIfCg5B",
-            "bGxDaGF0UmVxdWVzdBINCgV0b2tlbhgBIAEoCSI4CgpOZXdSZXF1ZXN0Eg0K",
-            "BXRva2VuGAEgASgJEgsKA19pZBgCIAEoCRIOCgZvbGRlc3QYAyABKAFCIKoC",
-            "HUNyeXB0Q2hhdFByb3Rvcy5SZXF1ZXN0cy5DaGF0YgZwcm90bzM="));
+            "C0NoYXRSZXF1ZXN0Eg0KBXRva2VuGAEgASgJEgsKA19pZBgCIAEoCSIgCg9D",
+            "aGF0TGlzdFJlcXVlc3QSDQoFdG9rZW4YASABKAkiOAoKTmV3UmVxdWVzdBIN",
+            "CgV0b2tlbhgBIAEoCRILCgNfaWQYAiABKAkSDgoGb2xkZXN0GAMgASgBQiCq",
+            "Ah1DcnlwdENoYXRQcm90b3MuUmVxdWVzdHMuQ2hhdGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Chat.QueueRequest), global::CryptChatProtos.Requests.Chat.QueueRequest.Parser, new[]{ "Token", "Id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Chat.ChatRequest), global::CryptChatProtos.Requests.Chat.ChatRequest.Parser, new[]{ "Token", "Id" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Chat.AllChatRequest), global::CryptChatProtos.Requests.Chat.AllChatRequest.Parser, new[]{ "Token" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Chat.ChatListRequest), global::CryptChatProtos.Requests.Chat.ChatListRequest.Parser, new[]{ "Token" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Chat.NewRequest), global::CryptChatProtos.Requests.Chat.NewRequest.Parser, new[]{ "Token", "Id", "Oldest" }, null, null, null)
           }));
     }
@@ -357,11 +357,11 @@ namespace CryptChatProtos.Requests.Chat {
 
   }
 
-  public sealed partial class AllChatRequest : pb::IMessage<AllChatRequest> {
-    private static readonly pb::MessageParser<AllChatRequest> _parser = new pb::MessageParser<AllChatRequest>(() => new AllChatRequest());
+  public sealed partial class ChatListRequest : pb::IMessage<ChatListRequest> {
+    private static readonly pb::MessageParser<ChatListRequest> _parser = new pb::MessageParser<ChatListRequest>(() => new ChatListRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<AllChatRequest> Parser { get { return _parser; } }
+    public static pb::MessageParser<ChatListRequest> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -374,21 +374,21 @@ namespace CryptChatProtos.Requests.Chat {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public AllChatRequest() {
+    public ChatListRequest() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public AllChatRequest(AllChatRequest other) : this() {
+    public ChatListRequest(ChatListRequest other) : this() {
       token_ = other.token_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public AllChatRequest Clone() {
-      return new AllChatRequest(this);
+    public ChatListRequest Clone() {
+      return new ChatListRequest(this);
     }
 
     /// <summary>Field number for the "token" field.</summary>
@@ -404,11 +404,11 @@ namespace CryptChatProtos.Requests.Chat {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as AllChatRequest);
+      return Equals(other as ChatListRequest);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(AllChatRequest other) {
+    public bool Equals(ChatListRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -458,7 +458,7 @@ namespace CryptChatProtos.Requests.Chat {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(AllChatRequest other) {
+    public void MergeFrom(ChatListRequest other) {
       if (other == null) {
         return;
       }

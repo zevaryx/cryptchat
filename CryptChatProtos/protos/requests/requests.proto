@@ -3,10 +3,10 @@ package cryptchatprotos.requests;
 
 import "google/protobuf/any.proto";
 
-import public "requests/message.proto";
-import public "requests/chat.proto";
-import public "requests/account.proto";
-import public "requests/auth.proto";
+import public "message.proto";
+import public "chat.proto";
+import public "account.proto";
+import public "auth.proto";
 
 option csharp_namespace = "CryptChatProtos.Requests";
 

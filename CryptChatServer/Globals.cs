@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 
 namespace CryptChatServer
 {
