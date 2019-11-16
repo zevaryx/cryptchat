@@ -28,17 +28,16 @@ namespace CryptChatProtos.Responses.Auth {
             "HAoMU2FsdFJlc3BvbnNlEgwKBHNhbHQYASABKAkiTQoNTG9naW5SZXNwb25z",
             "ZRILCgNfaWQYASABKAkSEAoIdXNlcm5hbWUYAiABKAkSDgoGcHVia2V5GAMg",
             "ASgJEg0KBXRva2VuGAQgASgJIjAKDFVzZXJSZXNwb25zZRIQCgh1c2VybmFt",
-            "ZRgBIAEoCRIOCgZwdWJrZXkYAiABKAkiXgoQUmVnaXN0ZXJSZXNwb25zZRIL",
-            "CgNfaWQYASABKAkSEAoIdXNlcm5hbWUYAiABKAkSDgoGcHVia2V5GAMgASgJ",
-            "Eg0KBXRva2VuGAQgASgJEgwKBHNhbHQYBSABKAlCIaoCHkNyeXB0Q2hhdFBy",
-            "b3Rvcy5SZXNwb25zZXMuQXV0aGIGcHJvdG8z"));
+            "ZRgBIAEoCRIOCgZwdWJrZXkYAiABKAkiLgoQUmVnaXN0ZXJSZXNwb25zZRIL",
+            "CgNfaWQYASABKAkSDQoFdG9rZW4YAiABKAlCIaoCHkNyeXB0Q2hhdFByb3Rv",
+            "cy5SZXNwb25zZXMuQXV0aGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.SaltResponse), global::CryptChatProtos.Responses.Auth.SaltResponse.Parser, new[]{ "Salt" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.LoginResponse), global::CryptChatProtos.Responses.Auth.LoginResponse.Parser, new[]{ "Id", "Username", "Pubkey", "Token" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.UserResponse), global::CryptChatProtos.Responses.Auth.UserResponse.Parser, new[]{ "Username", "Pubkey" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.RegisterResponse), global::CryptChatProtos.Responses.Auth.RegisterResponse.Parser, new[]{ "Id", "Username", "Pubkey", "Token", "Salt" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.RegisterResponse), global::CryptChatProtos.Responses.Auth.RegisterResponse.Parser, new[]{ "Id", "Token" }, null, null, null)
           }));
     }
     #endregion
@@ -570,10 +569,7 @@ namespace CryptChatProtos.Responses.Auth {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public RegisterResponse(RegisterResponse other) : this() {
       Id_ = other.Id_;
-      username_ = other.username_;
-      pubkey_ = other.pubkey_;
       token_ = other.token_;
-      salt_ = other.salt_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -593,47 +589,14 @@ namespace CryptChatProtos.Responses.Auth {
       }
     }
 
-    /// <summary>Field number for the "username" field.</summary>
-    public const int UsernameFieldNumber = 2;
-    private string username_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Username {
-      get { return username_; }
-      set {
-        username_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "pubkey" field.</summary>
-    public const int PubkeyFieldNumber = 3;
-    private string pubkey_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Pubkey {
-      get { return pubkey_; }
-      set {
-        pubkey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "token" field.</summary>
-    public const int TokenFieldNumber = 4;
+    public const int TokenFieldNumber = 2;
     private string token_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Token {
       get { return token_; }
       set {
         token_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "salt" field.</summary>
-    public const int SaltFieldNumber = 5;
-    private string salt_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Salt {
-      get { return salt_; }
-      set {
-        salt_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -651,10 +614,7 @@ namespace CryptChatProtos.Responses.Auth {
         return true;
       }
       if (Id != other.Id) return false;
-      if (Username != other.Username) return false;
-      if (Pubkey != other.Pubkey) return false;
       if (Token != other.Token) return false;
-      if (Salt != other.Salt) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -662,10 +622,7 @@ namespace CryptChatProtos.Responses.Auth {
     public override int GetHashCode() {
       int hash = 1;
       if (Id.Length != 0) hash ^= Id.GetHashCode();
-      if (Username.Length != 0) hash ^= Username.GetHashCode();
-      if (Pubkey.Length != 0) hash ^= Pubkey.GetHashCode();
       if (Token.Length != 0) hash ^= Token.GetHashCode();
-      if (Salt.Length != 0) hash ^= Salt.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -683,21 +640,9 @@ namespace CryptChatProtos.Responses.Auth {
         output.WriteRawTag(10);
         output.WriteString(Id);
       }
-      if (Username.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Username);
-      }
-      if (Pubkey.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Pubkey);
-      }
       if (Token.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(18);
         output.WriteString(Token);
-      }
-      if (Salt.Length != 0) {
-        output.WriteRawTag(42);
-        output.WriteString(Salt);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -710,17 +655,8 @@ namespace CryptChatProtos.Responses.Auth {
       if (Id.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
       }
-      if (Username.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Username);
-      }
-      if (Pubkey.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Pubkey);
-      }
       if (Token.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Token);
-      }
-      if (Salt.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Salt);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -736,17 +672,8 @@ namespace CryptChatProtos.Responses.Auth {
       if (other.Id.Length != 0) {
         Id = other.Id;
       }
-      if (other.Username.Length != 0) {
-        Username = other.Username;
-      }
-      if (other.Pubkey.Length != 0) {
-        Pubkey = other.Pubkey;
-      }
       if (other.Token.Length != 0) {
         Token = other.Token;
-      }
-      if (other.Salt.Length != 0) {
-        Salt = other.Salt;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -764,19 +691,7 @@ namespace CryptChatProtos.Responses.Auth {
             break;
           }
           case 18: {
-            Username = input.ReadString();
-            break;
-          }
-          case 26: {
-            Pubkey = input.ReadString();
-            break;
-          }
-          case 34: {
             Token = input.ReadString();
-            break;
-          }
-          case 42: {
-            Salt = input.ReadString();
             break;
           }
         }

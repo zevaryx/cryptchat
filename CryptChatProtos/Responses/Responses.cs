@@ -26,10 +26,10 @@ namespace CryptChatProtos.Responses {
           string.Concat(
             "Cg9yZXNwb25zZXMucHJvdG8SGWNyeXB0Y2hhdHByb3Rvcy5yZXNwb25zZXMa",
             "GWdvb2dsZS9wcm90b2J1Zi9hbnkucHJvdG8aDW1lc3NhZ2UucHJvdG8aCmNo",
-            "YXQucHJvdG8aDWFjY291bnQucHJvdG8aCmF1dGgucHJvdG8iXQoIUmVzcG9u",
-            "c2USDgoGc3RhdHVzGAEgASgFEgwKBHR5cGUYAiABKAUSIgoEZGF0YRgDIAEo",
-            "CzIULmdvb2dsZS5wcm90b2J1Zi5BbnkSDwoHbWVzc2FnZRgEIAEoCUIcqgIZ",
-            "Q3J5cHRDaGF0UHJvdG9zLlJlc3BvbnNlc1ABUAJQA1AEYgZwcm90bzM="));
+            "YXQucHJvdG8aDWFjY291bnQucHJvdG8aCmF1dGgucHJvdG8iRwoIUmVzcG9u",
+            "c2USDgoGc3RhdHVzGAEgASgFEgwKBHR5cGUYAiABKAUSDAoEZGF0YRgDIAEo",
+            "DBIPCgdtZXNzYWdlGAQgASgJQhyqAhlDcnlwdENoYXRQcm90b3MuUmVzcG9u",
+            "c2VzUAFQAlADUARiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::CryptChatProtos.Responses.Message.MessageReflection.Descriptor, global::CryptChatProtos.Responses.Chat.ChatReflection.Descriptor, global::CryptChatProtos.Responses.Account.AccountReflection.Descriptor, global::CryptChatProtos.Responses.Auth.AuthReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -70,7 +70,7 @@ namespace CryptChatProtos.Responses {
     public Response(Response other) : this() {
       status_ = other.status_;
       type_ = other.type_;
-      data_ = other.data_ != null ? other.data_.Clone() : null;
+      data_ = other.data_;
       message_ = other.message_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -104,12 +104,12 @@ namespace CryptChatProtos.Responses {
 
     /// <summary>Field number for the "data" field.</summary>
     public const int DataFieldNumber = 3;
-    private global::Google.Protobuf.WellKnownTypes.Any data_;
+    private pb::ByteString data_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Google.Protobuf.WellKnownTypes.Any Data {
+    public pb::ByteString Data {
       get { return data_; }
       set {
-        data_ = value;
+        data_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -139,7 +139,7 @@ namespace CryptChatProtos.Responses {
       }
       if (Status != other.Status) return false;
       if (Type != other.Type) return false;
-      if (!object.Equals(Data, other.Data)) return false;
+      if (Data != other.Data) return false;
       if (Message != other.Message) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -149,7 +149,7 @@ namespace CryptChatProtos.Responses {
       int hash = 1;
       if (Status != 0) hash ^= Status.GetHashCode();
       if (Type != 0) hash ^= Type.GetHashCode();
-      if (data_ != null) hash ^= Data.GetHashCode();
+      if (Data.Length != 0) hash ^= Data.GetHashCode();
       if (Message.Length != 0) hash ^= Message.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -172,9 +172,9 @@ namespace CryptChatProtos.Responses {
         output.WriteRawTag(16);
         output.WriteInt32(Type);
       }
-      if (data_ != null) {
+      if (Data.Length != 0) {
         output.WriteRawTag(26);
-        output.WriteMessage(Data);
+        output.WriteBytes(Data);
       }
       if (Message.Length != 0) {
         output.WriteRawTag(34);
@@ -194,8 +194,8 @@ namespace CryptChatProtos.Responses {
       if (Type != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Type);
       }
-      if (data_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Data);
+      if (Data.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Data);
       }
       if (Message.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
@@ -217,11 +217,8 @@ namespace CryptChatProtos.Responses {
       if (other.Type != 0) {
         Type = other.Type;
       }
-      if (other.data_ != null) {
-        if (data_ == null) {
-          Data = new global::Google.Protobuf.WellKnownTypes.Any();
-        }
-        Data.MergeFrom(other.Data);
+      if (other.Data.Length != 0) {
+        Data = other.Data;
       }
       if (other.Message.Length != 0) {
         Message = other.Message;
@@ -246,10 +243,7 @@ namespace CryptChatProtos.Responses {
             break;
           }
           case 26: {
-            if (data_ == null) {
-              Data = new global::Google.Protobuf.WellKnownTypes.Any();
-            }
-            input.ReadMessage(Data);
+            Data = input.ReadBytes();
             break;
           }
           case 34: {

@@ -26,22 +26,22 @@ namespace CryptChatProtos.Requests.Message {
           string.Concat(
             "Cg1tZXNzYWdlLnByb3RvEiBjcnlwdGNoYXRwcm90b3MucmVxdWVzdHMubWVz",
             "c2FnZSIsCg5NZXNzYWdlUmVxdWVzdBINCgV0b2tlbhgBIAEoCRILCgNfaWQY",
-            "AiABKAki8wEKElNlbmRNZXNzYWdlUmVxdWVzdBINCgV0b2tlbhgBIAEoCRIO",
+            "AiABKAkigQIKElNlbmRNZXNzYWdlUmVxdWVzdBINCgV0b2tlbhgBIAEoCRIO",
             "CgZzZW5kZXIYAiABKAkSEQoJcmVjaXBpZW50GAMgASgJEg8KB21lc3NhZ2UY",
             "BCABKAkSTAoEa2V5cxgFIAMoCzI+LmNyeXB0Y2hhdHByb3Rvcy5yZXF1ZXN0",
             "cy5tZXNzYWdlLlNlbmRNZXNzYWdlUmVxdWVzdC5LZXlzRW50cnkSEQoJc2ln",
-            "bmF0dXJlGAYgASgJEgwKBGZpbGUYByABKAkaKwoJS2V5c0VudHJ5EgsKA2tl",
-            "eRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEiZgoSRWRpdE1lc3NhZ2VSZXF1",
-            "ZXN0Eg0KBXRva2VuGAEgASgJEgsKA19pZBgCIAEoCRIQCgh1c2VybmFtZRgD",
-            "IAEoCRIPCgdtZXNzYWdlGAQgASgJEhEKCXNpZ25hdHVyZRgFIAEoCSIyChRE",
-            "ZWxldGVNZXNzYWdlUmVxdWVzdBINCgV0b2tlbhgBIAEoCRILCgNfaWQYAiAB",
-            "KAlCI6oCIENyeXB0Q2hhdFByb3Rvcy5SZXF1ZXN0cy5NZXNzYWdlYgZwcm90",
-            "bzM="));
+            "bmF0dXJlGAYgASgJEgwKBGZpbGUYByABKAkSDAoEY2hhdBgIIAEoCRorCglL",
+            "ZXlzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASJmChJF",
+            "ZGl0TWVzc2FnZVJlcXVlc3QSDQoFdG9rZW4YASABKAkSCwoDX2lkGAIgASgJ",
+            "EhAKCHVzZXJuYW1lGAMgASgJEg8KB21lc3NhZ2UYBCABKAkSEQoJc2lnbmF0",
+            "dXJlGAUgASgJIjIKFERlbGV0ZU1lc3NhZ2VSZXF1ZXN0Eg0KBXRva2VuGAEg",
+            "ASgJEgsKA19pZBgCIAEoCUIjqgIgQ3J5cHRDaGF0UHJvdG9zLlJlcXVlc3Rz",
+            "Lk1lc3NhZ2ViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Message.MessageRequest), global::CryptChatProtos.Requests.Message.MessageRequest.Parser, new[]{ "Token", "Id" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Message.SendMessageRequest), global::CryptChatProtos.Requests.Message.SendMessageRequest.Parser, new[]{ "Token", "Sender", "Recipient", "Message", "Keys", "Signature", "File" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Message.SendMessageRequest), global::CryptChatProtos.Requests.Message.SendMessageRequest.Parser, new[]{ "Token", "Sender", "Recipient", "Message", "Keys", "Signature", "File", "Chat" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Message.EditMessageRequest), global::CryptChatProtos.Requests.Message.EditMessageRequest.Parser, new[]{ "Token", "Id", "Username", "Message", "Signature" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Message.DeleteMessageRequest), global::CryptChatProtos.Requests.Message.DeleteMessageRequest.Parser, new[]{ "Token", "Id" }, null, null, null)
           }));
@@ -239,6 +239,7 @@ namespace CryptChatProtos.Requests.Message {
       keys_ = other.keys_.Clone();
       signature_ = other.signature_;
       file_ = other.file_;
+      chat_ = other.chat_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -323,6 +324,17 @@ namespace CryptChatProtos.Requests.Message {
       }
     }
 
+    /// <summary>Field number for the "chat" field.</summary>
+    public const int ChatFieldNumber = 8;
+    private string chat_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Chat {
+      get { return chat_; }
+      set {
+        chat_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as SendMessageRequest);
@@ -343,6 +355,7 @@ namespace CryptChatProtos.Requests.Message {
       if (!Keys.Equals(other.Keys)) return false;
       if (Signature != other.Signature) return false;
       if (File != other.File) return false;
+      if (Chat != other.Chat) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -356,6 +369,7 @@ namespace CryptChatProtos.Requests.Message {
       hash ^= Keys.GetHashCode();
       if (Signature.Length != 0) hash ^= Signature.GetHashCode();
       if (File.Length != 0) hash ^= File.GetHashCode();
+      if (Chat.Length != 0) hash ^= Chat.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -394,6 +408,10 @@ namespace CryptChatProtos.Requests.Message {
         output.WriteRawTag(58);
         output.WriteString(File);
       }
+      if (Chat.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(Chat);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -420,6 +438,9 @@ namespace CryptChatProtos.Requests.Message {
       }
       if (File.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(File);
+      }
+      if (Chat.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Chat);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -450,6 +471,9 @@ namespace CryptChatProtos.Requests.Message {
       }
       if (other.File.Length != 0) {
         File = other.File;
+      }
+      if (other.Chat.Length != 0) {
+        Chat = other.Chat;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -488,6 +512,10 @@ namespace CryptChatProtos.Requests.Message {
           }
           case 58: {
             File = input.ReadString();
+            break;
+          }
+          case 66: {
+            Chat = input.ReadString();
             break;
           }
         }

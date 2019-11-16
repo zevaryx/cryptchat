@@ -34,9 +34,9 @@ namespace CryptChatProtos.Responses.Message {
             "UmVzcG9uc2UiQwoTU2VuZE1lc3NhZ2VSZXNwb25zZRILCgNfaWQYASABKAkS",
             "DAoEY2hhdBgCIAEoCRIRCgl0aW1lc3RhbXAYAyABKAEiRQoTRWRpdE1lc3Nh",
             "Z2VSZXNwb25zZRIOCgZlZGl0ZWQYASABKAgSEQoJZWRpdGVkX2F0GAIgASgB",
-            "EgsKA19pZBgDIAEoCSInChVEZWxldGVNZXNzYWdlUmVzcG9uc2USDgoGc3Rh",
-            "dHVzGAEgASgJQiSqAiFDcnlwdENoYXRQcm90b3MuUmVzcG9uc2VzLk1lc3Nh",
-            "Z2ViBnByb3RvMw=="));
+            "EgsKA19pZBgDIAEoCSIoChVEZWxldGVNZXNzYWdlUmVzcG9uc2USDwoHZGVs",
+            "ZXRlZBgBIAEoCEIkqgIhQ3J5cHRDaGF0UHJvdG9zLlJlc3BvbnNlcy5NZXNz",
+            "YWdlYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -44,7 +44,7 @@ namespace CryptChatProtos.Responses.Message {
             new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Message.MessageListResponse), global::CryptChatProtos.Responses.Message.MessageListResponse.Parser, new[]{ "Messages" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Message.SendMessageResponse), global::CryptChatProtos.Responses.Message.SendMessageResponse.Parser, new[]{ "Id", "Chat", "Timestamp" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Message.EditMessageResponse), global::CryptChatProtos.Responses.Message.EditMessageResponse.Parser, new[]{ "Edited", "EditedAt", "Id" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Message.DeleteMessageResponse), global::CryptChatProtos.Responses.Message.DeleteMessageResponse.Parser, new[]{ "Status" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Message.DeleteMessageResponse), global::CryptChatProtos.Responses.Message.DeleteMessageResponse.Parser, new[]{ "Deleted" }, null, null, null)
           }));
     }
     #endregion
@@ -948,7 +948,7 @@ namespace CryptChatProtos.Responses.Message {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public DeleteMessageResponse(DeleteMessageResponse other) : this() {
-      status_ = other.status_;
+      deleted_ = other.deleted_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -957,14 +957,14 @@ namespace CryptChatProtos.Responses.Message {
       return new DeleteMessageResponse(this);
     }
 
-    /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 1;
-    private string status_ = "";
+    /// <summary>Field number for the "deleted" field.</summary>
+    public const int DeletedFieldNumber = 1;
+    private bool deleted_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Status {
-      get { return status_; }
+    public bool Deleted {
+      get { return deleted_; }
       set {
-        status_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        deleted_ = value;
       }
     }
 
@@ -981,14 +981,14 @@ namespace CryptChatProtos.Responses.Message {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Status != other.Status) return false;
+      if (Deleted != other.Deleted) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Status.Length != 0) hash ^= Status.GetHashCode();
+      if (Deleted != false) hash ^= Deleted.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1002,9 +1002,9 @@ namespace CryptChatProtos.Responses.Message {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Status.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Status);
+      if (Deleted != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(Deleted);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1014,8 +1014,8 @@ namespace CryptChatProtos.Responses.Message {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Status.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Status);
+      if (Deleted != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1028,8 +1028,8 @@ namespace CryptChatProtos.Responses.Message {
       if (other == null) {
         return;
       }
-      if (other.Status.Length != 0) {
-        Status = other.Status;
+      if (other.Deleted != false) {
+        Deleted = other.Deleted;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1042,8 +1042,8 @@ namespace CryptChatProtos.Responses.Message {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            Status = input.ReadString();
+          case 8: {
+            Deleted = input.ReadBool();
             break;
           }
         }

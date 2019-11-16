@@ -16,6 +16,7 @@ message SendMessageRequest {
 	map<string, string> keys = 5;
 	string signature = 6;
 	string file = 7;
+	string chat = 8;
 };
 
 message EditMessageRequest {

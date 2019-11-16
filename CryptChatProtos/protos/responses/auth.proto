@@ -21,8 +21,5 @@ message UserResponse {
 
 message RegisterResponse {
 	string _id = 1;
-	string username = 2;
-	string pubkey = 3;
-	string token = 4;
-	string salt = 5;
+	string token = 2;
 };

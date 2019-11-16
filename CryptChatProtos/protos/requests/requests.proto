@@ -13,5 +13,5 @@ option csharp_namespace = "CryptChatProtos.Requests";
 // Generic API response
 message Request {
 	int32 type = 1;
-	google.protobuf.Any data = 2;
+	bytes data = 2;
 };

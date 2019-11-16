@@ -9,6 +9,7 @@ namespace CryptChatProtos
     {
         public static readonly Dictionary<int, string> RequestTypeMap = new Dictionary<int, string>()
         {
+            { -1, "Error" },
             {  1, "MessageRequest" },
             {  2, "SendMessageRequest" },
             {  3, "EditMessageRequest" },
@@ -25,6 +26,7 @@ namespace CryptChatProtos
         };
         public static readonly Dictionary<int, string> ResponseTypeMap = new Dictionary<int, string>()
         {
+            { -1, "Error" },
             {  1, "MessageResponse" },
             {  2, "MessageListResponse" },
             {  3, "SendMessageResponse" },

@@ -33,5 +33,5 @@ message EditMessageResponse {
 };
 
 message DeleteMessageResponse {
-	string status = 1;
+	bool deleted = 1;
 };

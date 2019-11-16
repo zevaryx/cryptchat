@@ -26,10 +26,9 @@ namespace CryptChatProtos.Requests {
           string.Concat(
             "Cg5yZXF1ZXN0cy5wcm90bxIYY3J5cHRjaGF0cHJvdG9zLnJlcXVlc3RzGhln",
             "b29nbGUvcHJvdG9idWYvYW55LnByb3RvGg1tZXNzYWdlLnByb3RvGgpjaGF0",
-            "LnByb3RvGg1hY2NvdW50LnByb3RvGgphdXRoLnByb3RvIjsKB1JlcXVlc3QS",
-            "DAoEdHlwZRgBIAEoBRIiCgRkYXRhGAIgASgLMhQuZ29vZ2xlLnByb3RvYnVm",
-            "LkFueUIbqgIYQ3J5cHRDaGF0UHJvdG9zLlJlcXVlc3RzUAFQAlADUARiBnBy",
-            "b3RvMw=="));
+            "LnByb3RvGg1hY2NvdW50LnByb3RvGgphdXRoLnByb3RvIiUKB1JlcXVlc3QS",
+            "DAoEdHlwZRgBIAEoBRIMCgRkYXRhGAIgASgMQhuqAhhDcnlwdENoYXRQcm90",
+            "b3MuUmVxdWVzdHNQAVACUANQBGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::CryptChatProtos.Requests.Message.MessageReflection.Descriptor, global::CryptChatProtos.Requests.Chat.ChatReflection.Descriptor, global::CryptChatProtos.Requests.Account.AccountReflection.Descriptor, global::CryptChatProtos.Requests.Auth.AuthReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -69,7 +68,7 @@ namespace CryptChatProtos.Requests {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Request(Request other) : this() {
       type_ = other.type_;
-      data_ = other.data_ != null ? other.data_.Clone() : null;
+      data_ = other.data_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -91,12 +90,12 @@ namespace CryptChatProtos.Requests {
 
     /// <summary>Field number for the "data" field.</summary>
     public const int DataFieldNumber = 2;
-    private global::Google.Protobuf.WellKnownTypes.Any data_;
+    private pb::ByteString data_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Google.Protobuf.WellKnownTypes.Any Data {
+    public pb::ByteString Data {
       get { return data_; }
       set {
-        data_ = value;
+        data_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -114,7 +113,7 @@ namespace CryptChatProtos.Requests {
         return true;
       }
       if (Type != other.Type) return false;
-      if (!object.Equals(Data, other.Data)) return false;
+      if (Data != other.Data) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -122,7 +121,7 @@ namespace CryptChatProtos.Requests {
     public override int GetHashCode() {
       int hash = 1;
       if (Type != 0) hash ^= Type.GetHashCode();
-      if (data_ != null) hash ^= Data.GetHashCode();
+      if (Data.Length != 0) hash ^= Data.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -140,9 +139,9 @@ namespace CryptChatProtos.Requests {
         output.WriteRawTag(8);
         output.WriteInt32(Type);
       }
-      if (data_ != null) {
+      if (Data.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteMessage(Data);
+        output.WriteBytes(Data);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -155,8 +154,8 @@ namespace CryptChatProtos.Requests {
       if (Type != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Type);
       }
-      if (data_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Data);
+      if (Data.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Data);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -172,11 +171,8 @@ namespace CryptChatProtos.Requests {
       if (other.Type != 0) {
         Type = other.Type;
       }
-      if (other.data_ != null) {
-        if (data_ == null) {
-          Data = new global::Google.Protobuf.WellKnownTypes.Any();
-        }
-        Data.MergeFrom(other.Data);
+      if (other.Data.Length != 0) {
+        Data = other.Data;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -194,10 +190,7 @@ namespace CryptChatProtos.Requests {
             break;
           }
           case 18: {
-            if (data_ == null) {
-              Data = new global::Google.Protobuf.WellKnownTypes.Any();
-            }
-            input.ReadMessage(Data);
+            Data = input.ReadBytes();
             break;
           }
         }
