@@ -20,7 +20,6 @@ namespace CryptChatServer
                 Environment.Exit(1);
             }
             init_mongo();
-
             foreach (var x in CryptChatProtos.Requests.Message.MessageReflection.Descriptor.MessageTypes)
             {
                 Console.WriteLine(x.Name);

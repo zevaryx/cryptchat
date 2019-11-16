@@ -6,5 +6,6 @@ namespace CryptChatServer.Handlers
 {
     class Account
     {
+
     }
 }
