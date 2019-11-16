@@ -1,8 +1,6 @@
 ﻿syntax = "proto3";
 package cryptchatprotos.requests;
 
-import "google/protobuf/any.proto";
-
 import public "message.proto";
 import public "chat.proto";
 import public "account.proto";

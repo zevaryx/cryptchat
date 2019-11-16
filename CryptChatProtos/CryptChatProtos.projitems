@@ -24,20 +24,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Maps.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Requests\Account.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Requests\Auth.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Requests\Chat.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Requests\Message.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Requests\Requests.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Responses\Account.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Responses\Auth.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Responses\Chat.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CryptChatProtos.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Responses\Message.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Responses\Responses.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requests\Account.g.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requests\Auth.g.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requests\Chat.g.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requests\Message.g.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requests\Requests.g.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Responses\Account.g.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Responses\Auth.g.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Responses\Chat.g.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Responses\Message.g.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Responses\Responses.g.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)protos\responses\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Responses\" />
   </ItemGroup>
 </Project>
