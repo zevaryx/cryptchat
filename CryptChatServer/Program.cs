@@ -4,7 +4,7 @@ using MongoDB.Driver;
 
 namespace CryptChatServer
 {
-    class Program
+    public class Program
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         static void Main(string[] args)
@@ -26,7 +26,7 @@ namespace CryptChatServer
             }
         }
 
-        static void init_mongo()
+        public static void init_mongo()
         {
             var creds = MongoCredential.CreateCredential("admin", Globals.CONFIG.MongoDB.User, Globals.CONFIG.MongoDB.Passwd);
             var settings = new MongoClientSettings { Credential = creds, Server = new MongoServerAddress(Globals.CONFIG.MongoDB.Host) };

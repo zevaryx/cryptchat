@@ -5,7 +5,7 @@ using YamlDotNet.Serialization.NamingConventions;
 
 namespace CryptChatServer
 {
-    class FileIO
+    public class FileIO
     {
         public static Config GetConfigFromFile(string path = "config.yaml")
         {

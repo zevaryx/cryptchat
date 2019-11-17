@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Security.Cryptography;
 
 using MongoDB.Bson;
@@ -23,17 +22,11 @@ namespace CryptChatServer.Handlers
             string request_type = ProtoMaps.GetRequestType(request.Type);
             Response result = request_type switch
             {
-                "SaltRequest"     => ProcessSaltRequest(SaltRequest.Parser.ParseFrom(request.Data)),
-                "LoginRequest"    => ProcessLoginRequest(LoginRequest.Parser.ParseFrom(request.Data)),
-                "UserRequest"     => ProcessUserRequest(UserRequest.Parser.ParseFrom(request.Data)),
+                "SaltRequest" => ProcessSaltRequest(SaltRequest.Parser.ParseFrom(request.Data)),
+                "LoginRequest" => ProcessLoginRequest(LoginRequest.Parser.ParseFrom(request.Data)),
+                "UserRequest" => ProcessUserRequest(UserRequest.Parser.ParseFrom(request.Data)),
                 "RegisterRequest" => ProcessRegisterRequest(RegisterRequest.Parser.ParseFrom(request.Data)),
-                _                 => new Response()
-                {
-                    Data    = ByteString.Empty,
-                    Status  = 1,
-                    Message = $"Request of type {request_type} is not supported",
-                    Type    = -1
-                }
+                _ => Defaults.ErrorResponse($"Request type of {request_type} is not supported")
             };
             return result;
         }
@@ -81,13 +74,7 @@ namespace CryptChatServer.Handlers
 
             if (user is null || !request.Hash.Equals(user.hash))
             {
-                return new Response()
-                {
-                    Type    = -1,
-                    Data    = ByteString.Empty,
-                    Message = $"Login failed",
-                    Status  = 1
-                };
+                return Defaults.ErrorResponse("Login Failed");
             }
 
             var response = new LoginResponse()
@@ -117,13 +104,7 @@ namespace CryptChatServer.Handlers
             var user = Globals.USERS.Find(user_filter).First();
             if (user !is null)
             {
-                return new Response()
-                {
-                    Data    = ByteString.Empty,
-                    Type    = -1,
-                    Message = $"Registration failed",
-                    Status  = 1
-                };
+                return Defaults.ErrorResponse("Registration failed");
             }
 
             user = new Types.User()
@@ -163,13 +144,7 @@ namespace CryptChatServer.Handlers
 
             if (user is null)
             {
-                return new Response()
-                {
-                    Type = -1,
-                    Data = ByteString.Empty,
-                    Status = 1,
-                    Message = $"User retrieval failed"
-                };
+                return Defaults.ErrorResponse("User retrieval failed");
             }
 
             var response = new UserResponse()

@@ -22,16 +22,11 @@ namespace CryptChatServer.Handlers
             string request_type = ProtoMaps.GetRequestType(request.Type);
             Response result = request_type switch
             {
-                "DeleteMessageRequest" => ProcessDeleteRequest(DeleteMessageRequest.Parser.ParseFrom(request.Data)),
-                "SendMessageRequest"   => ProcessSendRequest(SendMessageRequest.Parser.ParseFrom(request.Data)),
-                "MessageRequest"       => ProcessMessageRequest(MessageRequest.Parser.ParseFrom(request.Data)),
-                "EditMessageRequest"   => ProcessEditRequest(EditMessageRequest.Parser.ParseFrom(request.Data)),
-                _                      => new Response() { 
-                                                Data    = ByteString.Empty, 
-                                                Status  = 1, 
-                                                Message = $"Request of type {request_type} is not supported", 
-                                                Type    = -1 
-                                            }
+            "DeleteMessageRequest" => ProcessDeleteRequest(DeleteMessageRequest.Parser.ParseFrom(request.Data)),
+            "SendMessageRequest" => ProcessSendRequest(SendMessageRequest.Parser.ParseFrom(request.Data)),
+            "MessageRequest" => ProcessMessageRequest(MessageRequest.Parser.ParseFrom(request.Data)),
+            "EditMessageRequest" => ProcessEditRequest(EditMessageRequest.Parser.ParseFrom(request.Data)),
+            _ => Defaults.ErrorResponse($"Request of type {request_type} is not supported")
             };
             return result;
         }
@@ -41,13 +36,7 @@ namespace CryptChatServer.Handlers
             var token_owner = Tokens.GetTokenOwner(request.Token);
             if (token_owner is null)
             {
-                return new Response()
-                {
-                    Data    = ByteString.Empty,
-                    Status  = 1,
-                    Message = $"Error deleting message",
-                    Type    = -1
-                };
+                return Defaults.ErrorResponse($"Error deleting message");
             }
 
             var message_filter = Builders<Types.Message>
@@ -59,13 +48,7 @@ namespace CryptChatServer.Handlers
                                         .First();
             if (message is null || token_owner._id.ToString() != message.sender)
             {
-                return new Response()
-                {
-                    Data    = ByteString.Empty,
-                    Status  = 1,
-                    Message = $"Error deleting message",
-                    Type    = -1
-                };
+                return Defaults.ErrorResponse($"Error deleting message");
             }
 
             var message_check = Globals.MESSAGES.FindOneAndDelete(message_filter) is null;
@@ -89,13 +72,7 @@ namespace CryptChatServer.Handlers
             var token_owner = Tokens.GetTokenOwner(request.Token);
             if (token_owner is null)
             {
-                return new Response()
-                {
-                    Data    = ByteString.Empty,
-                    Status  = 1,
-                    Message = $"Error sending message",
-                    Type    = -1
-                };
+                return Defaults.ErrorResponse($"Error sending message");
             }
 
             // Get recipient
@@ -103,19 +80,11 @@ namespace CryptChatServer.Handlers
                                 .Filter
                                 .Eq(u => u.username, request.Recipient);
 
-            Types.User recipient = Globals.USERS
-                                    .Find(user_filter)
-                                    .First();
+            Types.User recipient = Globals.USERS.Find(user_filter).First();
 
             if (recipient is null)
             {
-                return new Response()
-                {
-                    Data    = ByteString.Empty,
-                    Status  = 1,
-                    Message = $"Invalid recipient",
-                    Type    = -1
-                };
+                return Defaults.ErrorResponse($"Error sending message");
             }
 
             string chat_id = request.Chat;
@@ -154,13 +123,7 @@ namespace CryptChatServer.Handlers
                 
                 if (!chat.members.Contains(token_owner._id.ToString()))
                 {
-                    return new Response()
-                    {
-                        Data = ByteString.Empty,
-                        Status = 1,
-                        Message = $"Error sending message (sender not part of chat)",
-                        Type = -1
-                    };
+                    return Defaults.ErrorResponse("Error sending message");
                 }
             }
 
@@ -216,31 +179,19 @@ namespace CryptChatServer.Handlers
             var token_owner = Tokens.GetTokenOwner(request.Token);
             if (token_owner is null)
             {
-                return new Response() { 
-                    Data    = ByteString.Empty,
-                    Status  = 1,
-                    Message = $"Error retrieving message", 
-                    Type    = -1 
-                };
+                return Defaults.ErrorResponse("Error retrieving message");
             }
 
             // Get message
             var message_filter = Builders<Types.Message>
-                                    .Filter
-                                    .Eq(m => m._id.ToString(), request.Id);
+                                 .Filter
+                                 .Eq(m => m._id.ToString(), request.Id);
 
-            var document = Globals.MESSAGES
-                                    .Find(message_filter)
-                                    .First();
+            var document = Globals.MESSAGES.Find(message_filter).First();
 
             if (document is null)
             {
-                return new Response() { 
-                    Data    = ByteString.Empty, 
-                    Status  = 1,
-                    Message = $"Error retrieving message", 
-                    Type    = -1 
-                };
+                return Defaults.ErrorResponse("Error retrieving message");
             }
 
             // Get chat
@@ -248,18 +199,11 @@ namespace CryptChatServer.Handlers
                                 .Filter
                                 .Eq(c => c._id, document.chat);
 
-            var chat = Globals.CHATS
-                        .Find(chat_filter)
-                        .First();
+            var chat = Globals.CHATS.Find(chat_filter).First();
 
             if (chat is null || !chat.members.Contains(token_owner._id.ToString()))
             {
-                return new Response() { 
-                    Data    = ByteString.Empty, 
-                    Status  = 1, 
-                    Message = $"Error retrieving message", 
-                    Type    = -1 
-                };
+                return Defaults.ErrorResponse("Error retrieving message");
             }
 
             // Get sender username
@@ -267,10 +211,7 @@ namespace CryptChatServer.Handlers
                                 .Filter
                                 .Eq(u => u._id.ToString(), document.sender);
 
-            string sender = Globals.USERS
-                                .Find(user_filter)
-                                .First()
-                                .username;
+            string sender = Globals.USERS.Find(user_filter).First().username;
             
             // Build and return response
             var response = new MessageResponse()
@@ -301,31 +242,18 @@ namespace CryptChatServer.Handlers
 
             if  (token_owner is null)
             {
-                return new Response()
-                {
-                    Data    = ByteString.Empty,
-                    Status  = 1,
-                    Message = $"Error editing message",
-                    Type    = -1
-                };
+                return Defaults.ErrorResponse("Error editing message");
             }
 
             var message_filter = Builders<Types.Message>
                                  .Filter
                                  .Eq(m => m._id.ToString(), request.Id);
 
-            var message = Globals.MESSAGES
-                            .Find(message_filter).First();
+            var message = Globals.MESSAGES.Find(message_filter).First();
 
             if (message is null || message.sender != token_owner._id.ToString())
             {
-                return new Response()
-                {
-                    Data    = ByteString.Empty,
-                    Status  = 1,
-                    Message = $"Error editing message",
-                    Type    = -1
-                };
+                return Defaults.ErrorResponse("Error editing message");
             }
 
             var timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
