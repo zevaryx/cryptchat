@@ -41,12 +41,10 @@ namespace CryptChatServer.Handlers
 
             if (salt is null)
             {
-                using (var crypto = RandomNumberGenerator.Create())
-                {
-                    byte[] salt_byte = new byte[24];
-                    crypto.GetNonZeroBytes(salt_byte);
-                    salt = Convert.ToBase64String(salt_byte);
-                }
+                using var crypto = RandomNumberGenerator.Create();
+                byte[] salt_byte = new byte[24];
+                crypto.GetNonZeroBytes(salt_byte);
+                salt = Convert.ToBase64String(salt_byte);
             }
 
             var response = new SaltResponse()

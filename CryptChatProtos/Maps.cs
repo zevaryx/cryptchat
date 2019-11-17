@@ -44,8 +44,7 @@ namespace CryptChatProtos
 
         public static string GetResponseType(int type)
         {
-            string value = string.Empty;
-            bool success = ResponseTypeMap.TryGetValue(type, out value);
+            ResponseTypeMap.TryGetValue(type, out string value);
             return value;
         }
 
@@ -60,8 +59,7 @@ namespace CryptChatProtos
         }
         public static string GetRequestType(int type)
         {
-            string value = string.Empty;
-            bool success = RequestTypeMap.TryGetValue(type, out value);
+            RequestTypeMap.TryGetValue(type, out string value);
             return value;
         }
 

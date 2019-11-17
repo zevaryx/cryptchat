@@ -19,14 +19,14 @@ namespace CryptChatServer
                 Logger.Fatal($"Loading config failed. Reason: {e.Message}");
                 Environment.Exit(1);
             }
-            init_mongo();
+            InitMongo();
             foreach (var x in CryptChatProtos.Requests.Message.MessageReflection.Descriptor.MessageTypes)
             {
                 Console.WriteLine(x.Name);
             }
         }
 
-        public static void init_mongo()
+        public static void InitMongo()
         {
             var creds = MongoCredential.CreateCredential("admin", Globals.CONFIG.MongoDB.User, Globals.CONFIG.MongoDB.Passwd);
             var settings = new MongoClientSettings { Credential = creds, Server = new MongoServerAddress(Globals.CONFIG.MongoDB.Host) };
