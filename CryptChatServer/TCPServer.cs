@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -12,6 +13,9 @@ using CryptChatProtos.Responses.Message;
 using CryptChatProtos.Responses.Chat;
 using CryptChatProtos.Responses.Auth;
 using CryptChatProtos.Responses.Account;
+
+using ProtoMaps = CryptChatProtos.Maps;
+using CryptChatProtos.Requests;
 
 namespace CryptChatServer
 {
@@ -61,7 +65,7 @@ namespace CryptChatServer
         {
             TcpClient client = (TcpClient)obj;
             var stream = client.GetStream();
-            string data = "";
+            List<byte> data = new List<byte>();
             byte[] buffer = new byte[512];
             int i;
             try
@@ -70,9 +74,18 @@ namespace CryptChatServer
                 {
                     while ((i = stream.Read(buffer, 0, buffer.Length)) != 0)
                     {
-                        data += Encoding.ASCII.GetString(buffer, 0, i);
+                        data.AddRange(buffer[0..i]);
                     }
-                    Response response = new Response();
+                    Request request = Request.Parser.ParseFrom(data.ToArray());
+                    Response response = ProtoMaps.GetRangeResult(request.Type) switch
+                    {
+                        "Message" =>  Handlers.Message.ProcessRequest(request),
+                        "Chat" => Handlers.Chat.ProcessRequest(request),
+                        "Auth" => Handlers.Auth.ProcessRequest(request),
+                        "Account" => Handlers.Account.ProcessRequest(request),
+                        _ => Handlers.Defaults.ErrorResponse("Unknown request")
+                    };
+                    
                     byte[] output = response.ToByteArray();
                     stream.Write(output, 0, output.Length);
                 }

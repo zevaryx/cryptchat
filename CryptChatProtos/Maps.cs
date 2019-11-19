@@ -42,6 +42,20 @@ namespace CryptChatProtos
             { 13, "ChangePasswordResponse" }
         };
 
+        public static readonly List<int> MessageRange = new List<int> { 1, 2, 3, 4, 5 };
+        public static readonly List<int> ChatRange = new List<int> { 6, 7, 8, 9 };
+        public static readonly List<int> AuthRange = new List<int> { 10, 11, 12 };
+        public static readonly List<int> AccountRange = new List<int> { 13 };
+
+        public static string GetRangeResult(int type)
+        {
+            if (MessageRange.Contains(type)) { return "Message"; }
+            if (ChatRange.Contains(type)) { return "Chat"; }
+            if (AuthRange.Contains(type)) { return "Auth"; }
+            if (AccountRange.Contains(type)) { return "AccountRange"; }
+            return "";
+        }
+
         public static string GetResponseType(int type)
         {
             ResponseTypeMap.TryGetValue(type, out string value);
