@@ -4,7 +4,7 @@ using MongoDB.Driver;
 
 namespace CryptChatServer
 {
-    public class Program
+    public static class Program
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         static void Main(string[] args)
@@ -19,11 +19,16 @@ namespace CryptChatServer
                 Logger.Fatal($"Loading config failed. Reason: {e.Message}");
                 Environment.Exit(1);
             }
+            Logger.Debug("Setting up MongoDB");
             InitMongo();
+            Logger.Info($"Starting server at {Globals.CONFIG.Server.BindIP}:{Globals.CONFIG.Server.Port}");
+            StartServer();
+            /*
             foreach (var x in CryptChatProtos.Requests.Message.MessageReflection.Descriptor.MessageTypes)
             {
                 Console.WriteLine(x.Name);
             }
+            */
         }
 
         public static void InitMongo()
@@ -35,6 +40,14 @@ namespace CryptChatServer
             Globals.USERS = Globals.MONGO_DATABASE.GetCollection<Types.User>("user");
             Globals.MESSAGES = Globals.MONGO_DATABASE.GetCollection<Types.Message>("message");
             Globals.CHATS = Globals.MONGO_DATABASE.GetCollection<Types.Chat>("chat");
+        }
+        public static void StartServer()
+        {
+            Logger.Debug("Building server");
+            TCPServer server = new TCPServer(Globals.CONFIG.Server.BindIP, Globals.CONFIG.Server.Port, Globals.CONFIG.Server.Autostart);
+            if (!Globals.CONFIG.Server.Autostart)
+                Logger.Debug("Server not set to autostart. Starting listener");
+                server.StartListener();
         }
     }
 }

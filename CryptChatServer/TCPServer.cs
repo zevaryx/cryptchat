@@ -25,12 +25,13 @@ namespace CryptChatServer
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private TcpListener server = null;
 
-        public TCPServer(string ip, ushort port)
+        public TCPServer(string ip, ushort port, bool autostart)
         {
             IPAddress bind_addr = IPAddress.Parse(ip);
             server = new TcpListener(bind_addr, port);
             server.Start();
-            StartListener();
+            if (autostart)
+                StartListener();
         }
 
         public void StartListener()

@@ -21,7 +21,7 @@ namespace CryptChatServer
             get => _bindIP;
             set
             {
-                if (string.IsNullOrWhiteSpace(value)) throw new FormatException("IP address is empty!");
+                if (string.IsNullOrWhiteSpace(value)) throw new FormatException("IP address cannot be empty");
                 string[] spl = value.Split('.');
                 if (spl.Length != 4) throw new FormatException($"{value} does not have 4 octals!");
                 byte tmp;
@@ -39,6 +39,13 @@ namespace CryptChatServer
                 if (value < 1024) throw new FormatException($"{value} is set to a reserved port. Refusing to set!");
                 _port = value;
             }
+        }
+
+        private bool _autostart = false;
+        public bool Autostart
+        {
+            get => _autostart;
+            set => _autostart = value;
         }
     }
     public class MongoDBConfig

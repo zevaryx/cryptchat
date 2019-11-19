@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptChatServer", "CryptCha
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CryptChatProtos", "CryptChatProtos\CryptChatProtos.shproj", "{E651A601-B406-4048-BE16-5C2C59B80420}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptChatClientWin", "CryptChatClientWin\CryptChatClientWin.csproj", "{2471B2A6-9B2C-4F2D-B325-B3C02A3E0A9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptChatCore", "CryptChatCore\CryptChatCore.csproj", "{B9834C8B-1929-4793-AFC8-F7C9D1C9F501}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		CryptChatProtos\CryptChatProtos.projitems*{e651a601-b406-4048-be16-5c2c59b80420}*SharedItemsImports = 13
@@ -26,6 +30,22 @@ Global
 		{1A3F7785-C179-4DCA-8BC7-CB2A3584A667}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1A3F7785-C179-4DCA-8BC7-CB2A3584A667}.Release|x64.ActiveCfg = Release|x64
 		{1A3F7785-C179-4DCA-8BC7-CB2A3584A667}.Release|x64.Build.0 = Release|x64
+		{2471B2A6-9B2C-4F2D-B325-B3C02A3E0A9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2471B2A6-9B2C-4F2D-B325-B3C02A3E0A9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2471B2A6-9B2C-4F2D-B325-B3C02A3E0A9D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2471B2A6-9B2C-4F2D-B325-B3C02A3E0A9D}.Debug|x64.Build.0 = Debug|Any CPU
+		{2471B2A6-9B2C-4F2D-B325-B3C02A3E0A9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2471B2A6-9B2C-4F2D-B325-B3C02A3E0A9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2471B2A6-9B2C-4F2D-B325-B3C02A3E0A9D}.Release|x64.ActiveCfg = Release|Any CPU
+		{2471B2A6-9B2C-4F2D-B325-B3C02A3E0A9D}.Release|x64.Build.0 = Release|Any CPU
+		{B9834C8B-1929-4793-AFC8-F7C9D1C9F501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9834C8B-1929-4793-AFC8-F7C9D1C9F501}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9834C8B-1929-4793-AFC8-F7C9D1C9F501}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B9834C8B-1929-4793-AFC8-F7C9D1C9F501}.Debug|x64.Build.0 = Debug|Any CPU
+		{B9834C8B-1929-4793-AFC8-F7C9D1C9F501}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9834C8B-1929-4793-AFC8-F7C9D1C9F501}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9834C8B-1929-4793-AFC8-F7C9D1C9F501}.Release|x64.ActiveCfg = Release|Any CPU
+		{B9834C8B-1929-4793-AFC8-F7C9D1C9F501}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
