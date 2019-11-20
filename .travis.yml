@@ -2,12 +2,12 @@ language: csharp
 mono: none
 dotnet: 3.0.100
 
-install:
-- dotnet restore
+#install:
+#- dotnet restore
 
 script:
- - dotnet build --configuration Release
- 
+ - ./linux-build.sh
+
 after_success:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
