@@ -2,6 +2,8 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 
+using CryptChatCore;
+
 namespace CryptChatServer
 {
     public static class Program
@@ -22,7 +24,8 @@ namespace CryptChatServer
             Logger.Debug("Setting up MongoDB");
             InitMongo();
             Logger.Info($"Starting server at {Globals.CONFIG.Server.BindIP}:{Globals.CONFIG.Server.Port}");
-            StartServer();
+            //StartServer();
+            CryptChatCore.Security.Utils.LoadMemoryKey();
             /*
             foreach (var x in CryptChatProtos.Requests.Message.MessageReflection.Descriptor.MessageTypes)
             {
