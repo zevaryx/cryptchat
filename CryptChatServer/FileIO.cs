@@ -5,12 +5,12 @@ using YamlDotNet.Serialization.NamingConventions;
 
 namespace CryptChatServer
 {
-    public class FileIO
+    public static class FileIO
     {
         public static Config GetConfigFromFile(string path = "config.yaml")
         {
             if (!File.Exists(path)) throw new FileNotFoundException($"{path} does not exist. Please check path to config");
-            var input = new StringReader(File.ReadAllText(path));
+            using var input = new StringReader(File.ReadAllText(path));
             var deserializer = new DeserializerBuilder()
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
                 .Build();

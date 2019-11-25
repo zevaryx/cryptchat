@@ -44,7 +44,7 @@ namespace CryptChatCore.Models
             {
                 var cipher_file = File.ReadAllBytes(path);
                 PrivateKey = Security.Utils.Unlock(Convert.ToBase64String(cipher_file));
-                var priv_bytes = Convert.FromBase64String(Security.Utils.Unlock(PrivateKey));
+                var priv_bytes = Convert.FromBase64String(Security.Utils.Unlock(PrivateKey, password));
                 using (var kpair = PublicKeyBox.GenerateKeyPair(priv_bytes))
                 {
                     PublicKey = Convert.ToBase64String(kpair.PublicKey);
