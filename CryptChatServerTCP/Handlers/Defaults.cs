@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CryptChatServer.Handlers
+namespace CryptChatServerTCP.Handlers
 {
     public static class Defaults
     {

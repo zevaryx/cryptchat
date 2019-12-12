@@ -1,0 +1,26 @@
+﻿<Window x:Class="CryptChatCoreTesting.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CryptChatCoreTesting"
+        mc:Ignorable="d"
+        Title="Core Tester" Height="720" Width="1280">
+    <Grid>
+        <TextBox x:Name="txtMemKey" HorizontalAlignment="Left" Margin="10,37,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="402" Height="20" IsEnabled="False" FontFamily="Fira Code Retina"/>
+        <Button x:Name="btnMemKey" Content="Load Memory Key" HorizontalAlignment="Left" Margin="417,36,0,0" VerticalAlignment="Top" Click="btnMemKey_Click"/>
+        <Label Content="Security" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtSalt" HorizontalAlignment="Left" Margin="10,64,0,0" Text="Salt will appear here..." TextWrapping="Wrap" VerticalAlignment="Top" Width="402" IsEnabled="False" FontFamily="Fira Code Retina"/>
+        <TextBox x:Name="txtPassHash" HorizontalAlignment="Left" Margin="10,87,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="402" FontFamily="Fira Code Retina"/>
+        <Button x:Name="btnPassHash" Content="Hash Pass" HorizontalAlignment="Left" Margin="417,85,0,0" VerticalAlignment="Top" Width="100" Click="btnPassHash_Click"/>
+        <Label Content="Boxes" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top"/>
+        <Label Content="Public:" HorizontalAlignment="Left" Margin="14,237,0,0" VerticalAlignment="Top"/>
+        <Label Content="Private:" HorizontalAlignment="Left" Margin="10,268,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtPub" HorizontalAlignment="Left" Margin="78,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="334" FontFamily="Fira Code Retina" IsEnabled="False"/>
+        <TextBox x:Name="txtPriv" HorizontalAlignment="Left" Margin="78,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="334" IsEnabled="False" FontFamily="Fira Code Retina"/>
+        <Button x:Name="btnKeypair" Content="Generate Keypair" HorizontalAlignment="Left" Margin="417,253,0,0" VerticalAlignment="Top" Width="100" Click="btnKeypair_Click"/>
+        <Label Content="gRPC" HorizontalAlignment="Left" Margin="678,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtAddress" HorizontalAlignment="Left" Margin="678,36,0,0" Text="https://localhost:5001" TextWrapping="Wrap" VerticalAlignment="Top" Width="346"/>
+        <Button x:Name="btnConnect" Content="Connect" HorizontalAlignment="Left" Margin="1038,36,0,0" VerticalAlignment="Top" Click="btnConnect_Click"/>
+    </Grid>
+</Window>

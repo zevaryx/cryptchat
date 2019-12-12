@@ -31,6 +31,10 @@ namespace CryptChatCore.Security
             using var entropy = new MemoryStream();
             if (!File.Exists(path))
             {
+                if (!Directory.Exists(path.Substring(0, path.LastIndexOf('/'))))
+                {
+                    Directory.CreateDirectory(path.Substring(0, path.LastIndexOf('/')));
+                }
                 entropy.Write(SodiumCore.GetRandomBytes(16384));
                 File.WriteAllBytes(path, entropy.ToArray());
             }

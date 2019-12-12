@@ -10,10 +10,10 @@ using ProtoMaps = CryptChatProtos.Maps;
 using CryptChatProtos.Responses.Message;
 using CryptChatProtos.Requests.Message;
 
-using CryptChatServer.Utils;
+using CryptChatServerTCP.Utils;
 
 
-namespace CryptChatServer.Handlers
+namespace CryptChatServerTCP.Handlers
 {
     class Message
     {
@@ -143,7 +143,7 @@ namespace CryptChatServer.Handlers
                 key       = key,
                 message   = request.Message,
                 sender    = token_owner._id.ToString(),
-                signature = request.Signature,
+                nonce     = request.Nonce,
                 timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()
             };
 
@@ -160,7 +160,7 @@ namespace CryptChatServer.Handlers
                 Id        = message._id.ToString(),
                 Key       = sender_key, 
                 Sender    = token_owner.username.ToString(), 
-                Signature = message.signature, 
+                Nonce     = message.nonce, 
                 Timestamp = message.timestamp
             };
             return new Response()
@@ -224,7 +224,7 @@ namespace CryptChatServer.Handlers
                 Key       = document.key.GetValueOrDefault(token_owner._id.ToString()),
                 Message   = document.message,
                 Sender    = sender,
-                Signature = document.signature,
+                Nonce     = document.nonce,
                 Timestamp = document.timestamp
             };
 
@@ -260,14 +260,14 @@ namespace CryptChatServer.Handlers
             message.edited = true;
             message.edited_at = timestamp;
             message.message = request.Message;
-            message.signature = request.Signature;
+            message.nonce = request.Nonce;
 
             var message_update = Builders<Types.Message>
                                  .Update
                                  .Set(m => m.edited, true)
                                  .Set(m => m.edited_at, timestamp)
                                  .Set(m => m.message, request.Message)
-                                 .Set(m => m.signature, request.Signature);
+                                 .Set(m => m.nonce, request.Nonce);
 
             Globals.MESSAGES.FindOneAndUpdate(message_filter, message_update);
 

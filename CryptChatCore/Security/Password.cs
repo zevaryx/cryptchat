@@ -9,12 +9,12 @@ namespace CryptChatCore.Security
     /// <summary>
     /// Password management
     /// </summary>
-    class Password
+    public class Password
     {
         public static string GenerateSalt()
         {
             var salt = PasswordHash.ScryptGenerateSalt();
-            return Encoding.ASCII.GetString(salt);
+            return Convert.ToBase64String(salt);
         }
 
         public static string HashPassword(string password, string salt)
@@ -27,8 +27,12 @@ namespace CryptChatCore.Security
             {
                 throw new ArgumentNullException(nameof(salt));
             }
+            if (!Utils.IsBase64(salt))
+            {
+                throw new ArgumentException($"{nameof(salt)} must be a Base64-encoded string");
+            }
 
-            byte[] hash = PasswordHash.ScryptHashBinary(password, salt, PasswordHash.Strength.Interactive, 128);
+            byte[] hash = PasswordHash.ScryptHashBinary(Encoding.ASCII.GetBytes(password), Convert.FromBase64String(salt), PasswordHash.Strength.Interactive, 128);
             return Convert.ToBase64String(hash);
         }
     }

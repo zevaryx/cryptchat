@@ -11,9 +11,9 @@ using ProtoMaps = CryptChatProtos.Maps;
 using CryptChatProtos.Responses.Auth;
 using CryptChatProtos.Requests.Auth;
 
-using CryptChatServer.Utils;
+using CryptChatServerTCP.Utils;
 
-namespace CryptChatServer.Handlers
+namespace CryptChatServerTCP.Handlers
 {
     class Auth
     {

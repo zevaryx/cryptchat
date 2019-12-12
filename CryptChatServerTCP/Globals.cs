@@ -2,10 +2,11 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
-namespace CryptChatServer
+namespace CryptChatServerTCP
 {
     public static class Globals
     {
+        public static NLog.LogLevel LOGLEVEL { get; set; }
         public static Config CONFIG { get; set; }
         public static MongoClient MONGO_CLIENT { get; set; }
         public static IMongoDatabase MONGO_DATABASE { get; set; }

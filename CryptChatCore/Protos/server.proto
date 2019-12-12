@@ -1,0 +1,182 @@
+syntax = "proto3";
+
+option csharp_namespace = "CryptChatCore.Protos";
+
+package server;
+
+service Server {
+	rpc GetMessage (MessageRequest) returns (MessageResponse);
+	rpc SendMessage (SendMessageRequest) returns (SendMessageResponse);
+	rpc EditMessage (EditMessageRequest) returns (EditMessageResponse);
+	rpc DeleteMessage (DeleteMessageRequest) returns (DeleteMessageResponse);
+	rpc GetQueue (QueueRequest) returns (QueueResponse);
+	rpc GetChat (ChatRequest) returns (ChatResponse);
+	rpc GetChatList (ChatListRequest) returns (ChatListResponse);
+	rpc GetNew (NewRequest) returns (ChatListResponse);
+	rpc GetSalt (SaltRequest) returns (SaltResponse);
+	rpc Login (LoginRequest) returns (LoginResponse);
+	rpc GetUser (UserRequest) returns (UserResponse);
+	rpc Register (RegisterRequest) returns (RegisterResponse);
+	rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
+}
+
+// Requests
+// Message
+message MessageRequest {
+	string token = 1;
+	string _id = 2;
+};
+
+message SendMessageRequest {
+	string token = 1;
+	string sender = 2;
+	string recipient = 3;
+	string message = 4;
+	map<string, string> keys = 5;
+	string nonce = 6;
+	string file = 7;
+	string chat = 8;
+};
+
+message EditMessageRequest {
+	string token = 1;
+	string _id = 2;
+	string username = 3;
+	string message = 4;
+	string nonce = 5;
+};
+
+message DeleteMessageRequest {
+	string token= 1;
+	string _id = 2;
+};
+
+// Chat
+message QueueRequest {
+	string token = 1;
+	string _id = 2;
+};
+
+message ChatRequest {
+	string token = 1;
+	string _id = 2;
+};
+
+message ChatListRequest {
+	string token = 1;
+};
+
+message NewRequest {
+	string token = 1;
+	string _id = 2;
+	double oldest = 3;
+};
+
+// Auth
+message SaltRequest {
+	string username = 1;
+};
+
+message LoginRequest {
+	string username = 1;
+	string hash = 2;
+};
+
+message UserRequest {
+	string username = 1;
+};
+
+message RegisterRequest {
+	string username = 1;
+	string hash = 2;
+	string pubkey = 3;
+	string salt = 4;
+};
+
+// Account
+message ChangePasswordRequest {
+	string token = 1;
+	string old_hash = 2;
+	string new_hash = 3;
+	string pubkey = 4;
+	string salt = 5;
+};
+
+// Responses
+// Message
+message MessageResponse {
+	string _id = 1;
+	string chat = 2;
+	string message = 3;
+	string key = 4;
+	string nonce = 5;
+	double timestamp = 6;
+	string sender = 7;
+	bool edited = 8;
+	double edited_at = 9;
+	string file = 10;
+};
+
+message MessageListResponse {
+	repeated MessageResponse messages = 1;
+};
+
+message SendMessageResponse {
+	string _id = 1;
+	string chat = 2;
+	double timestamp = 3;
+};
+
+message EditMessageResponse {
+	bool edited = 1;
+	double edited_at = 2;
+	string _id = 3;
+};
+
+message DeleteMessageResponse {
+	bool deleted = 1;
+};
+
+// Chat
+message QueueResponse {
+	repeated string deleted = 1;
+	repeated string edited = 2;
+	repeated string resync = 3;
+};
+
+message ChatResponse {
+	string _id = 1;
+	repeated string members = 2;
+	int32 msg_count = 3;
+};
+
+message ChatListResponse {
+	repeated ChatResponse chats = 1;
+};
+
+// Auth
+message SaltResponse {
+	string salt = 1;
+};
+
+message LoginResponse {
+	string _id = 1;
+	string username = 2;
+	string pubkey = 3;
+	string token = 4;
+};
+
+message UserResponse {
+	string username = 1;
+	string pubkey = 2;
+};
+
+message RegisterResponse {
+	string _id = 1;
+	string token = 2;
+};
+
+// Account
+message ChangePasswordResponse {
+	string token = 1;
+};

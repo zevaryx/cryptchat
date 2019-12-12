@@ -33,11 +33,11 @@ namespace CryptChatProtos.Responses.Auth {
             "cy5SZXNwb25zZXMuQXV0aGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.SaltResponse), global::CryptChatProtos.Responses.Auth.SaltResponse.Parser, new[]{ "Salt" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.LoginResponse), global::CryptChatProtos.Responses.Auth.LoginResponse.Parser, new[]{ "Id", "Username", "Pubkey", "Token" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.UserResponse), global::CryptChatProtos.Responses.Auth.UserResponse.Parser, new[]{ "Username", "Pubkey" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.RegisterResponse), global::CryptChatProtos.Responses.Auth.RegisterResponse.Parser, new[]{ "Id", "Token" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.SaltResponse), global::CryptChatProtos.Responses.Auth.SaltResponse.Parser, new[]{ "Salt" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.LoginResponse), global::CryptChatProtos.Responses.Auth.LoginResponse.Parser, new[]{ "Id", "Username", "Pubkey", "Token" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.UserResponse), global::CryptChatProtos.Responses.Auth.UserResponse.Parser, new[]{ "Username", "Pubkey" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Auth.RegisterResponse), global::CryptChatProtos.Responses.Auth.RegisterResponse.Parser, new[]{ "Id", "Token" }, null, null, null, null)
           }));
     }
     #endregion

@@ -26,24 +26,24 @@ namespace CryptChatProtos.Requests.Message {
           string.Concat(
             "Cg1tZXNzYWdlLnByb3RvEiBjcnlwdGNoYXRwcm90b3MucmVxdWVzdHMubWVz",
             "c2FnZSIsCg5NZXNzYWdlUmVxdWVzdBINCgV0b2tlbhgBIAEoCRILCgNfaWQY",
-            "AiABKAkigQIKElNlbmRNZXNzYWdlUmVxdWVzdBINCgV0b2tlbhgBIAEoCRIO",
+            "AiABKAki/QEKElNlbmRNZXNzYWdlUmVxdWVzdBINCgV0b2tlbhgBIAEoCRIO",
             "CgZzZW5kZXIYAiABKAkSEQoJcmVjaXBpZW50GAMgASgJEg8KB21lc3NhZ2UY",
             "BCABKAkSTAoEa2V5cxgFIAMoCzI+LmNyeXB0Y2hhdHByb3Rvcy5yZXF1ZXN0",
-            "cy5tZXNzYWdlLlNlbmRNZXNzYWdlUmVxdWVzdC5LZXlzRW50cnkSEQoJc2ln",
-            "bmF0dXJlGAYgASgJEgwKBGZpbGUYByABKAkSDAoEY2hhdBgIIAEoCRorCglL",
-            "ZXlzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASJmChJF",
-            "ZGl0TWVzc2FnZVJlcXVlc3QSDQoFdG9rZW4YASABKAkSCwoDX2lkGAIgASgJ",
-            "EhAKCHVzZXJuYW1lGAMgASgJEg8KB21lc3NhZ2UYBCABKAkSEQoJc2lnbmF0",
-            "dXJlGAUgASgJIjIKFERlbGV0ZU1lc3NhZ2VSZXF1ZXN0Eg0KBXRva2VuGAEg",
-            "ASgJEgsKA19pZBgCIAEoCUIjqgIgQ3J5cHRDaGF0UHJvdG9zLlJlcXVlc3Rz",
-            "Lk1lc3NhZ2ViBnByb3RvMw=="));
+            "cy5tZXNzYWdlLlNlbmRNZXNzYWdlUmVxdWVzdC5LZXlzRW50cnkSDQoFbm9u",
+            "Y2UYBiABKAkSDAoEZmlsZRgHIAEoCRIMCgRjaGF0GAggASgJGisKCUtleXNF",
+            "bnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBImIKEkVkaXRN",
+            "ZXNzYWdlUmVxdWVzdBINCgV0b2tlbhgBIAEoCRILCgNfaWQYAiABKAkSEAoI",
+            "dXNlcm5hbWUYAyABKAkSDwoHbWVzc2FnZRgEIAEoCRINCgVub25jZRgFIAEo",
+            "CSIyChREZWxldGVNZXNzYWdlUmVxdWVzdBINCgV0b2tlbhgBIAEoCRILCgNf",
+            "aWQYAiABKAlCI6oCIENyeXB0Q2hhdFByb3Rvcy5SZXF1ZXN0cy5NZXNzYWdl",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Message.MessageRequest), global::CryptChatProtos.Requests.Message.MessageRequest.Parser, new[]{ "Token", "Id" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Message.SendMessageRequest), global::CryptChatProtos.Requests.Message.SendMessageRequest.Parser, new[]{ "Token", "Sender", "Recipient", "Message", "Keys", "Signature", "File", "Chat" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Message.EditMessageRequest), global::CryptChatProtos.Requests.Message.EditMessageRequest.Parser, new[]{ "Token", "Id", "Username", "Message", "Signature" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Message.DeleteMessageRequest), global::CryptChatProtos.Requests.Message.DeleteMessageRequest.Parser, new[]{ "Token", "Id" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Message.MessageRequest), global::CryptChatProtos.Requests.Message.MessageRequest.Parser, new[]{ "Token", "Id" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Message.SendMessageRequest), global::CryptChatProtos.Requests.Message.SendMessageRequest.Parser, new[]{ "Token", "Sender", "Recipient", "Message", "Keys", "Nonce", "File", "Chat" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Message.EditMessageRequest), global::CryptChatProtos.Requests.Message.EditMessageRequest.Parser, new[]{ "Token", "Id", "Username", "Message", "Nonce" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Message.DeleteMessageRequest), global::CryptChatProtos.Requests.Message.DeleteMessageRequest.Parser, new[]{ "Token", "Id" }, null, null, null, null)
           }));
     }
     #endregion
@@ -237,7 +237,7 @@ namespace CryptChatProtos.Requests.Message {
       recipient_ = other.recipient_;
       message_ = other.message_;
       keys_ = other.keys_.Clone();
-      signature_ = other.signature_;
+      nonce_ = other.nonce_;
       file_ = other.file_;
       chat_ = other.chat_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -295,21 +295,21 @@ namespace CryptChatProtos.Requests.Message {
     /// <summary>Field number for the "keys" field.</summary>
     public const int KeysFieldNumber = 5;
     private static readonly pbc::MapField<string, string>.Codec _map_keys_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 42);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 42);
     private readonly pbc::MapField<string, string> keys_ = new pbc::MapField<string, string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::MapField<string, string> Keys {
       get { return keys_; }
     }
 
-    /// <summary>Field number for the "signature" field.</summary>
-    public const int SignatureFieldNumber = 6;
-    private string signature_ = "";
+    /// <summary>Field number for the "nonce" field.</summary>
+    public const int NonceFieldNumber = 6;
+    private string nonce_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Signature {
-      get { return signature_; }
+    public string Nonce {
+      get { return nonce_; }
       set {
-        signature_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        nonce_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -353,7 +353,7 @@ namespace CryptChatProtos.Requests.Message {
       if (Recipient != other.Recipient) return false;
       if (Message != other.Message) return false;
       if (!Keys.Equals(other.Keys)) return false;
-      if (Signature != other.Signature) return false;
+      if (Nonce != other.Nonce) return false;
       if (File != other.File) return false;
       if (Chat != other.Chat) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -367,7 +367,7 @@ namespace CryptChatProtos.Requests.Message {
       if (Recipient.Length != 0) hash ^= Recipient.GetHashCode();
       if (Message.Length != 0) hash ^= Message.GetHashCode();
       hash ^= Keys.GetHashCode();
-      if (Signature.Length != 0) hash ^= Signature.GetHashCode();
+      if (Nonce.Length != 0) hash ^= Nonce.GetHashCode();
       if (File.Length != 0) hash ^= File.GetHashCode();
       if (Chat.Length != 0) hash ^= Chat.GetHashCode();
       if (_unknownFields != null) {
@@ -400,9 +400,9 @@ namespace CryptChatProtos.Requests.Message {
         output.WriteString(Message);
       }
       keys_.WriteTo(output, _map_keys_codec);
-      if (Signature.Length != 0) {
+      if (Nonce.Length != 0) {
         output.WriteRawTag(50);
-        output.WriteString(Signature);
+        output.WriteString(Nonce);
       }
       if (File.Length != 0) {
         output.WriteRawTag(58);
@@ -433,8 +433,8 @@ namespace CryptChatProtos.Requests.Message {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
       }
       size += keys_.CalculateSize(_map_keys_codec);
-      if (Signature.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Signature);
+      if (Nonce.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Nonce);
       }
       if (File.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(File);
@@ -466,8 +466,8 @@ namespace CryptChatProtos.Requests.Message {
         Message = other.Message;
       }
       keys_.Add(other.keys_);
-      if (other.Signature.Length != 0) {
-        Signature = other.Signature;
+      if (other.Nonce.Length != 0) {
+        Nonce = other.Nonce;
       }
       if (other.File.Length != 0) {
         File = other.File;
@@ -507,7 +507,7 @@ namespace CryptChatProtos.Requests.Message {
             break;
           }
           case 50: {
-            Signature = input.ReadString();
+            Nonce = input.ReadString();
             break;
           }
           case 58: {
@@ -553,7 +553,7 @@ namespace CryptChatProtos.Requests.Message {
       Id_ = other.Id_;
       username_ = other.username_;
       message_ = other.message_;
-      signature_ = other.signature_;
+      nonce_ = other.nonce_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -606,14 +606,14 @@ namespace CryptChatProtos.Requests.Message {
       }
     }
 
-    /// <summary>Field number for the "signature" field.</summary>
-    public const int SignatureFieldNumber = 5;
-    private string signature_ = "";
+    /// <summary>Field number for the "nonce" field.</summary>
+    public const int NonceFieldNumber = 5;
+    private string nonce_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Signature {
-      get { return signature_; }
+    public string Nonce {
+      get { return nonce_; }
       set {
-        signature_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        nonce_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -634,7 +634,7 @@ namespace CryptChatProtos.Requests.Message {
       if (Id != other.Id) return false;
       if (Username != other.Username) return false;
       if (Message != other.Message) return false;
-      if (Signature != other.Signature) return false;
+      if (Nonce != other.Nonce) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -645,7 +645,7 @@ namespace CryptChatProtos.Requests.Message {
       if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (Username.Length != 0) hash ^= Username.GetHashCode();
       if (Message.Length != 0) hash ^= Message.GetHashCode();
-      if (Signature.Length != 0) hash ^= Signature.GetHashCode();
+      if (Nonce.Length != 0) hash ^= Nonce.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -675,9 +675,9 @@ namespace CryptChatProtos.Requests.Message {
         output.WriteRawTag(34);
         output.WriteString(Message);
       }
-      if (Signature.Length != 0) {
+      if (Nonce.Length != 0) {
         output.WriteRawTag(42);
-        output.WriteString(Signature);
+        output.WriteString(Nonce);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -699,8 +699,8 @@ namespace CryptChatProtos.Requests.Message {
       if (Message.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
       }
-      if (Signature.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Signature);
+      if (Nonce.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Nonce);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -725,8 +725,8 @@ namespace CryptChatProtos.Requests.Message {
       if (other.Message.Length != 0) {
         Message = other.Message;
       }
-      if (other.Signature.Length != 0) {
-        Signature = other.Signature;
+      if (other.Nonce.Length != 0) {
+        Nonce = other.Nonce;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -756,7 +756,7 @@ namespace CryptChatProtos.Requests.Message {
             break;
           }
           case 42: {
-            Signature = input.ReadString();
+            Nonce = input.ReadString();
             break;
           }
         }

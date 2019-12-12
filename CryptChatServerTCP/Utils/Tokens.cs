@@ -1,9 +1,9 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
 
-using CryptChatServer.Types;
+using CryptChatServerTCP.Types;
 
-namespace CryptChatServer.Utils
+namespace CryptChatServerTCP.Utils
 {
     class Tokens
     {

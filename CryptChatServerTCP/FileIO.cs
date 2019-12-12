@@ -3,7 +3,7 @@
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
-namespace CryptChatServer
+namespace CryptChatServerTCP
 {
     public static class FileIO
     {

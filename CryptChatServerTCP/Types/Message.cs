@@ -2,7 +2,7 @@
 
 using MongoDB.Bson;
 
-namespace CryptChatServer.Types
+namespace CryptChatServerTCP.Types
 {
     public class Message
     {
@@ -10,7 +10,7 @@ namespace CryptChatServer.Types
         public ObjectId chat { get; set; }
         public string message { get; set; }
         public Dictionary<string, string> key { get; set; }
-        public string signature { get; set; }
+        public string nonce { get; set; }
         public double timestamp { get; set; }
         public string sender { get; set; }
         public bool edited { get; set; }

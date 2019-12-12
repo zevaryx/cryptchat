@@ -24,15 +24,14 @@ namespace CryptChatProtos.Requests {
     static RequestsReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg5yZXF1ZXN0cy5wcm90bxIYY3J5cHRjaGF0cHJvdG9zLnJlcXVlc3RzGhln",
-            "b29nbGUvcHJvdG9idWYvYW55LnByb3RvGg1tZXNzYWdlLnByb3RvGgpjaGF0",
-            "LnByb3RvGg1hY2NvdW50LnByb3RvGgphdXRoLnByb3RvIiUKB1JlcXVlc3QS",
-            "DAoEdHlwZRgBIAEoBRIMCgRkYXRhGAIgASgMQhuqAhhDcnlwdENoYXRQcm90",
-            "b3MuUmVxdWVzdHNQAVACUANQBGIGcHJvdG8z"));
+            "Cg5yZXF1ZXN0cy5wcm90bxIYY3J5cHRjaGF0cHJvdG9zLnJlcXVlc3RzGg1t",
+            "ZXNzYWdlLnByb3RvGgpjaGF0LnByb3RvGg1hY2NvdW50LnByb3RvGgphdXRo",
+            "LnByb3RvIiUKB1JlcXVlc3QSDAoEdHlwZRgBIAEoBRIMCgRkYXRhGAIgASgM",
+            "QhuqAhhDcnlwdENoYXRQcm90b3MuUmVxdWVzdHNQAFABUAJQA2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::CryptChatProtos.Requests.Message.MessageReflection.Descriptor, global::CryptChatProtos.Requests.Chat.ChatReflection.Descriptor, global::CryptChatProtos.Requests.Account.AccountReflection.Descriptor, global::CryptChatProtos.Requests.Auth.AuthReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Request), global::CryptChatProtos.Requests.Request.Parser, new[]{ "Type", "Data" }, null, null, null)
+          new pbr::FileDescriptor[] { global::CryptChatProtos.Requests.Message.MessageReflection.Descriptor, global::CryptChatProtos.Requests.Chat.ChatReflection.Descriptor, global::CryptChatProtos.Requests.Account.AccountReflection.Descriptor, global::CryptChatProtos.Requests.Auth.AuthReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Request), global::CryptChatProtos.Requests.Request.Parser, new[]{ "Type", "Data" }, null, null, null, null)
           }));
     }
     #endregion

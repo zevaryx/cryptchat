@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 
-namespace CryptChatServer.Types
+namespace CryptChatServerTCP.Types
 {
     public class Queue
     {

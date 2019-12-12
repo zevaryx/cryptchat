@@ -12,9 +12,9 @@ using CryptChatProtos.Requests.Chat;
 using CryptChatProtos.Responses.Chat;
 using CryptChatProtos.Responses.Message;
 using ProtoMaps = CryptChatProtos.Maps;
-using CryptChatServer.Utils;
+using CryptChatServerTCP.Utils;
 
-namespace CryptChatServer.Handlers
+namespace CryptChatServerTCP.Handlers
 {
     class Chat
     {
@@ -190,7 +190,7 @@ namespace CryptChatServer.Handlers
                     Id = m._id.ToString(), 
                     Key = key, 
                     Message = m.message, 
-                    Signature = m.signature, 
+                    Nonce = m.nonce, 
                     Timestamp = m.timestamp
                 });
             }

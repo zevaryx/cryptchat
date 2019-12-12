@@ -33,10 +33,10 @@ namespace CryptChatProtos.Responses.Chat {
             "UHJvdG9zLlJlc3BvbnNlcy5DaGF0YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Chat.QueueResponse), global::CryptChatProtos.Responses.Chat.QueueResponse.Parser, new[]{ "Deleted", "Edited", "Resync" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Chat.ChatResponse), global::CryptChatProtos.Responses.Chat.ChatResponse.Parser, new[]{ "Id", "Members", "MsgCount" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Chat.ChatListResponse), global::CryptChatProtos.Responses.Chat.ChatListResponse.Parser, new[]{ "Chats" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Chat.QueueResponse), global::CryptChatProtos.Responses.Chat.QueueResponse.Parser, new[]{ "Deleted", "Edited", "Resync" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Chat.ChatResponse), global::CryptChatProtos.Responses.Chat.ChatResponse.Parser, new[]{ "Id", "Members", "MsgCount" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Chat.ChatListResponse), global::CryptChatProtos.Responses.Chat.ChatListResponse.Parser, new[]{ "Chats" }, null, null, null, null)
           }));
     }
     #endregion

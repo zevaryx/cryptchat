@@ -24,7 +24,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Maps.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CryptChatProtos.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Requests\Account.g.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Requests\Auth.g.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Requests\Chat.g.cs" />

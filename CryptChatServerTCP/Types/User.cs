@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 
-namespace CryptChatServer.Types
+namespace CryptChatServerTCP.Types
 {
     public class User
     {

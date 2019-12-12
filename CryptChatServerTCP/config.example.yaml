@@ -2,6 +2,7 @@
     port: 55132
     bind_ip: 0.0.0.0
     autostart: false
+    certpath: cert.pem
 mongodb:
     port: 27017
     user: user

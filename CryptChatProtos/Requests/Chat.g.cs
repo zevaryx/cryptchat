@@ -32,11 +32,11 @@ namespace CryptChatProtos.Requests.Chat {
             "Ah1DcnlwdENoYXRQcm90b3MuUmVxdWVzdHMuQ2hhdGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Chat.QueueRequest), global::CryptChatProtos.Requests.Chat.QueueRequest.Parser, new[]{ "Token", "Id" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Chat.ChatRequest), global::CryptChatProtos.Requests.Chat.ChatRequest.Parser, new[]{ "Token", "Id" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Chat.ChatListRequest), global::CryptChatProtos.Requests.Chat.ChatListRequest.Parser, new[]{ "Token" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Chat.NewRequest), global::CryptChatProtos.Requests.Chat.NewRequest.Parser, new[]{ "Token", "Id", "Oldest" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Chat.QueueRequest), global::CryptChatProtos.Requests.Chat.QueueRequest.Parser, new[]{ "Token", "Id" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Chat.ChatRequest), global::CryptChatProtos.Requests.Chat.ChatRequest.Parser, new[]{ "Token", "Id" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Chat.ChatListRequest), global::CryptChatProtos.Requests.Chat.ChatListRequest.Parser, new[]{ "Token" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Chat.NewRequest), global::CryptChatProtos.Requests.Chat.NewRequest.Parser, new[]{ "Token", "Id", "Oldest" }, null, null, null, null)
           }));
     }
     #endregion

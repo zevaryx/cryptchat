@@ -14,7 +14,7 @@ message SendMessageRequest {
 	string recipient = 3;
 	string message = 4;
 	map<string, string> keys = 5;
-	string signature = 6;
+	string nonce = 6;
 	string file = 7;
 	string chat = 8;
 };
@@ -24,7 +24,7 @@ message EditMessageRequest {
 	string _id = 2;
 	string username = 3;
 	string message = 4;
-	string signature = 5;
+	string nonce = 5;
 };
 
 message DeleteMessageRequest {

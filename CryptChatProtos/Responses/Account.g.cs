@@ -30,8 +30,8 @@ namespace CryptChatProtos.Responses.Account {
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Account.ChangePasswordResponse), global::CryptChatProtos.Responses.Account.ChangePasswordResponse.Parser, new[]{ "Token" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Account.ChangePasswordResponse), global::CryptChatProtos.Responses.Account.ChangePasswordResponse.Parser, new[]{ "Token" }, null, null, null, null)
           }));
     }
     #endregion

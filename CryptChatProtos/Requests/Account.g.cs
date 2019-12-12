@@ -31,8 +31,8 @@ namespace CryptChatProtos.Requests.Account {
             "ZXN0cy5BY2NvdW50YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Account.ChangePasswordRequest), global::CryptChatProtos.Requests.Account.ChangePasswordRequest.Parser, new[]{ "Token", "OldHash", "NewHash", "Pubkey", "Salt" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Account.ChangePasswordRequest), global::CryptChatProtos.Requests.Account.ChangePasswordRequest.Parser, new[]{ "Token", "OldHash", "NewHash", "Pubkey", "Salt" }, null, null, null, null)
           }));
     }
     #endregion

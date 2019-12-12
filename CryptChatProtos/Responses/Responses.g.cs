@@ -25,15 +25,14 @@ namespace CryptChatProtos.Responses {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg9yZXNwb25zZXMucHJvdG8SGWNyeXB0Y2hhdHByb3Rvcy5yZXNwb25zZXMa",
-            "GWdvb2dsZS9wcm90b2J1Zi9hbnkucHJvdG8aDW1lc3NhZ2UucHJvdG8aCmNo",
-            "YXQucHJvdG8aDWFjY291bnQucHJvdG8aCmF1dGgucHJvdG8iRwoIUmVzcG9u",
-            "c2USDgoGc3RhdHVzGAEgASgFEgwKBHR5cGUYAiABKAUSDAoEZGF0YRgDIAEo",
-            "DBIPCgdtZXNzYWdlGAQgASgJQhyqAhlDcnlwdENoYXRQcm90b3MuUmVzcG9u",
-            "c2VzUAFQAlADUARiBnByb3RvMw=="));
+            "DW1lc3NhZ2UucHJvdG8aCmNoYXQucHJvdG8aDWFjY291bnQucHJvdG8aCmF1",
+            "dGgucHJvdG8iRwoIUmVzcG9uc2USDgoGc3RhdHVzGAEgASgFEgwKBHR5cGUY",
+            "AiABKAUSDAoEZGF0YRgDIAEoDBIPCgdtZXNzYWdlGAQgASgJQhyqAhlDcnlw",
+            "dENoYXRQcm90b3MuUmVzcG9uc2VzUABQAVACUANiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::CryptChatProtos.Responses.Message.MessageReflection.Descriptor, global::CryptChatProtos.Responses.Chat.ChatReflection.Descriptor, global::CryptChatProtos.Responses.Account.AccountReflection.Descriptor, global::CryptChatProtos.Responses.Auth.AuthReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Response), global::CryptChatProtos.Responses.Response.Parser, new[]{ "Status", "Type", "Data", "Message" }, null, null, null)
+          new pbr::FileDescriptor[] { global::CryptChatProtos.Responses.Message.MessageReflection.Descriptor, global::CryptChatProtos.Responses.Chat.ChatReflection.Descriptor, global::CryptChatProtos.Responses.Account.AccountReflection.Descriptor, global::CryptChatProtos.Responses.Auth.AuthReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Response), global::CryptChatProtos.Responses.Response.Parser, new[]{ "Status", "Type", "Data", "Message" }, null, null, null, null)
           }));
     }
     #endregion

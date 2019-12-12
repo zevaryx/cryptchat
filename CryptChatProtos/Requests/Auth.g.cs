@@ -33,11 +33,11 @@ namespace CryptChatProtos.Requests.Auth {
             "dGhiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Auth.SaltRequest), global::CryptChatProtos.Requests.Auth.SaltRequest.Parser, new[]{ "Username" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Auth.LoginRequest), global::CryptChatProtos.Requests.Auth.LoginRequest.Parser, new[]{ "Username", "Hash" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Auth.UserRequest), global::CryptChatProtos.Requests.Auth.UserRequest.Parser, new[]{ "Username" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Auth.RegisterRequest), global::CryptChatProtos.Requests.Auth.RegisterRequest.Parser, new[]{ "Username", "Hash", "Pubkey", "Salt" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Auth.SaltRequest), global::CryptChatProtos.Requests.Auth.SaltRequest.Parser, new[]{ "Username" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Auth.LoginRequest), global::CryptChatProtos.Requests.Auth.LoginRequest.Parser, new[]{ "Username", "Hash" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Auth.UserRequest), global::CryptChatProtos.Requests.Auth.UserRequest.Parser, new[]{ "Username" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Requests.Auth.RegisterRequest), global::CryptChatProtos.Requests.Auth.RegisterRequest.Parser, new[]{ "Username", "Hash", "Pubkey", "Salt" }, null, null, null, null)
           }));
     }
     #endregion

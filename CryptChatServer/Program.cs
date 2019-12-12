@@ -1,56 +1,27 @@
-﻿using System;
-using MongoDB.Bson;
-using MongoDB.Driver;
-
-using CryptChatCore;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace CryptChatServer
 {
-    public static class Program
+    public class Program
     {
-        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Logger.Debug("Getting config...");
-            try
-            {
-                Globals.CONFIG = FileIO.GetConfigFromFile();
-            }
-            catch (Exception e)
-            {
-                Logger.Fatal($"Loading config failed. Reason: {e.Message}");
-                Environment.Exit(1);
-            }
-            Logger.Debug("Setting up MongoDB");
-            InitMongo();
-            Logger.Info($"Starting server at {Globals.CONFIG.Server.BindIP}:{Globals.CONFIG.Server.Port}");
-            //StartServer();
-            CryptChatCore.Security.Utils.LoadMemoryKey();
-            /*
-            foreach (var x in CryptChatProtos.Requests.Message.MessageReflection.Descriptor.MessageTypes)
-            {
-                Console.WriteLine(x.Name);
-            }
-            */
+            CreateHostBuilder(args).Build().Run();
         }
 
-        public static void InitMongo()
-        {
-            var creds = MongoCredential.CreateCredential("admin", Globals.CONFIG.MongoDB.User, Globals.CONFIG.MongoDB.Passwd);
-            var settings = new MongoClientSettings { Credential = creds, Server = new MongoServerAddress(Globals.CONFIG.MongoDB.Host) };
-            Globals.MONGO_CLIENT = new MongoClient(settings);
-            Globals.MONGO_DATABASE = Globals.MONGO_CLIENT.GetDatabase(Globals.CONFIG.MongoDB.Database);
-            Globals.USERS = Globals.MONGO_DATABASE.GetCollection<Types.User>("user");
-            Globals.MESSAGES = Globals.MONGO_DATABASE.GetCollection<Types.Message>("message");
-            Globals.CHATS = Globals.MONGO_DATABASE.GetCollection<Types.Chat>("chat");
-        }
-        public static void StartServer()
-        {
-            Logger.Debug("Building server");
-            TCPServer server = new TCPServer(Globals.CONFIG.Server.BindIP, Globals.CONFIG.Server.Port, Globals.CONFIG.Server.Autostart);
-            if (!Globals.CONFIG.Server.Autostart)
-                Logger.Debug("Server not set to autostart. Starting listener");
-                server.StartListener();
-        }
+        // Additional configuration is required to successfully run gRPC on macOS.
+        // For instructions on how to configure Kestrel and gRPC clients on macOS, visit https://go.microsoft.com/fwlink/?linkid=2099682
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }

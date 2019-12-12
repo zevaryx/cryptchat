@@ -6,7 +6,7 @@ using Sodium;
 
 namespace CryptChatCore.Security.Boxes
 {
-    class Asymmetric
+    public static class Asymmetric
     {
         public static KeyPair GenerateKeyPair(byte[] seed = null)
         {
@@ -76,7 +76,7 @@ namespace CryptChatCore.Security.Boxes
         }
     }
 
-    class Symmetric
+    public static class Symmetric
     {
         public static string GenerateKey()
         {

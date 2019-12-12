@@ -1,9 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 
 using YamlDotNet.Serialization;
 
-namespace CryptChatServer
+namespace CryptChatServerTCP
 {
     public class Config
     {
@@ -46,6 +47,25 @@ namespace CryptChatServer
         {
             get => _autostart;
             set => _autostart = value;
+        }
+
+        private string _certpath = "cert.pem";
+        public string Certpath
+        {
+            get => _certpath;
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    _certpath = string.Empty;
+                }
+                else if (!File.Exists(value))
+                {
+                    _certpath = string.Empty;
+                }
+                else
+                    _certpath = value;
+            }
         }
     }
     public class MongoDBConfig

@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using System;
 
-namespace CryptChatServer.Utils
+namespace CryptChatServerTCP.Utils
 {
     class Generators
     {

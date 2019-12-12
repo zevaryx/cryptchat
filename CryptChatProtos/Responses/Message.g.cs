@@ -25,26 +25,26 @@ namespace CryptChatProtos.Responses.Message {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg1tZXNzYWdlLnByb3RvEiFjcnlwdGNoYXRwcm90b3MucmVzcG9uc2VzLm1l",
-            "c3NhZ2UisQEKD01lc3NhZ2VSZXNwb25zZRILCgNfaWQYASABKAkSDAoEY2hh",
-            "dBgCIAEoCRIPCgdtZXNzYWdlGAMgASgJEgsKA2tleRgEIAEoCRIRCglzaWdu",
-            "YXR1cmUYBSABKAkSEQoJdGltZXN0YW1wGAYgASgBEg4KBnNlbmRlchgHIAEo",
-            "CRIOCgZlZGl0ZWQYCCABKAgSEQoJZWRpdGVkX2F0GAkgASgBEgwKBGZpbGUY",
-            "CiABKAkiWwoTTWVzc2FnZUxpc3RSZXNwb25zZRJECghtZXNzYWdlcxgBIAMo",
-            "CzIyLmNyeXB0Y2hhdHByb3Rvcy5yZXNwb25zZXMubWVzc2FnZS5NZXNzYWdl",
-            "UmVzcG9uc2UiQwoTU2VuZE1lc3NhZ2VSZXNwb25zZRILCgNfaWQYASABKAkS",
-            "DAoEY2hhdBgCIAEoCRIRCgl0aW1lc3RhbXAYAyABKAEiRQoTRWRpdE1lc3Nh",
-            "Z2VSZXNwb25zZRIOCgZlZGl0ZWQYASABKAgSEQoJZWRpdGVkX2F0GAIgASgB",
-            "EgsKA19pZBgDIAEoCSIoChVEZWxldGVNZXNzYWdlUmVzcG9uc2USDwoHZGVs",
-            "ZXRlZBgBIAEoCEIkqgIhQ3J5cHRDaGF0UHJvdG9zLlJlc3BvbnNlcy5NZXNz",
-            "YWdlYgZwcm90bzM="));
+            "c3NhZ2UirQEKD01lc3NhZ2VSZXNwb25zZRILCgNfaWQYASABKAkSDAoEY2hh",
+            "dBgCIAEoCRIPCgdtZXNzYWdlGAMgASgJEgsKA2tleRgEIAEoCRINCgVub25j",
+            "ZRgFIAEoCRIRCgl0aW1lc3RhbXAYBiABKAESDgoGc2VuZGVyGAcgASgJEg4K",
+            "BmVkaXRlZBgIIAEoCBIRCgllZGl0ZWRfYXQYCSABKAESDAoEZmlsZRgKIAEo",
+            "CSJbChNNZXNzYWdlTGlzdFJlc3BvbnNlEkQKCG1lc3NhZ2VzGAEgAygLMjIu",
+            "Y3J5cHRjaGF0cHJvdG9zLnJlc3BvbnNlcy5tZXNzYWdlLk1lc3NhZ2VSZXNw",
+            "b25zZSJDChNTZW5kTWVzc2FnZVJlc3BvbnNlEgsKA19pZBgBIAEoCRIMCgRj",
+            "aGF0GAIgASgJEhEKCXRpbWVzdGFtcBgDIAEoASJFChNFZGl0TWVzc2FnZVJl",
+            "c3BvbnNlEg4KBmVkaXRlZBgBIAEoCBIRCgllZGl0ZWRfYXQYAiABKAESCwoD",
+            "X2lkGAMgASgJIigKFURlbGV0ZU1lc3NhZ2VSZXNwb25zZRIPCgdkZWxldGVk",
+            "GAEgASgIQiSqAiFDcnlwdENoYXRQcm90b3MuUmVzcG9uc2VzLk1lc3NhZ2Vi",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Message.MessageResponse), global::CryptChatProtos.Responses.Message.MessageResponse.Parser, new[]{ "Id", "Chat", "Message", "Key", "Signature", "Timestamp", "Sender", "Edited", "EditedAt", "File" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Message.MessageListResponse), global::CryptChatProtos.Responses.Message.MessageListResponse.Parser, new[]{ "Messages" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Message.SendMessageResponse), global::CryptChatProtos.Responses.Message.SendMessageResponse.Parser, new[]{ "Id", "Chat", "Timestamp" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Message.EditMessageResponse), global::CryptChatProtos.Responses.Message.EditMessageResponse.Parser, new[]{ "Edited", "EditedAt", "Id" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Message.DeleteMessageResponse), global::CryptChatProtos.Responses.Message.DeleteMessageResponse.Parser, new[]{ "Deleted" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Message.MessageResponse), global::CryptChatProtos.Responses.Message.MessageResponse.Parser, new[]{ "Id", "Chat", "Message", "Key", "Nonce", "Timestamp", "Sender", "Edited", "EditedAt", "File" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Message.MessageListResponse), global::CryptChatProtos.Responses.Message.MessageListResponse.Parser, new[]{ "Messages" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Message.SendMessageResponse), global::CryptChatProtos.Responses.Message.SendMessageResponse.Parser, new[]{ "Id", "Chat", "Timestamp" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Message.EditMessageResponse), global::CryptChatProtos.Responses.Message.EditMessageResponse.Parser, new[]{ "Edited", "EditedAt", "Id" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CryptChatProtos.Responses.Message.DeleteMessageResponse), global::CryptChatProtos.Responses.Message.DeleteMessageResponse.Parser, new[]{ "Deleted" }, null, null, null, null)
           }));
     }
     #endregion
@@ -80,7 +80,7 @@ namespace CryptChatProtos.Responses.Message {
       chat_ = other.chat_;
       message_ = other.message_;
       key_ = other.key_;
-      signature_ = other.signature_;
+      nonce_ = other.nonce_;
       timestamp_ = other.timestamp_;
       sender_ = other.sender_;
       edited_ = other.edited_;
@@ -138,14 +138,14 @@ namespace CryptChatProtos.Responses.Message {
       }
     }
 
-    /// <summary>Field number for the "signature" field.</summary>
-    public const int SignatureFieldNumber = 5;
-    private string signature_ = "";
+    /// <summary>Field number for the "nonce" field.</summary>
+    public const int NonceFieldNumber = 5;
+    private string nonce_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Signature {
-      get { return signature_; }
+    public string Nonce {
+      get { return nonce_; }
       set {
-        signature_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        nonce_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -221,7 +221,7 @@ namespace CryptChatProtos.Responses.Message {
       if (Chat != other.Chat) return false;
       if (Message != other.Message) return false;
       if (Key != other.Key) return false;
-      if (Signature != other.Signature) return false;
+      if (Nonce != other.Nonce) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Timestamp, other.Timestamp)) return false;
       if (Sender != other.Sender) return false;
       if (Edited != other.Edited) return false;
@@ -237,7 +237,7 @@ namespace CryptChatProtos.Responses.Message {
       if (Chat.Length != 0) hash ^= Chat.GetHashCode();
       if (Message.Length != 0) hash ^= Message.GetHashCode();
       if (Key.Length != 0) hash ^= Key.GetHashCode();
-      if (Signature.Length != 0) hash ^= Signature.GetHashCode();
+      if (Nonce.Length != 0) hash ^= Nonce.GetHashCode();
       if (Timestamp != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Timestamp);
       if (Sender.Length != 0) hash ^= Sender.GetHashCode();
       if (Edited != false) hash ^= Edited.GetHashCode();
@@ -272,9 +272,9 @@ namespace CryptChatProtos.Responses.Message {
         output.WriteRawTag(34);
         output.WriteString(Key);
       }
-      if (Signature.Length != 0) {
+      if (Nonce.Length != 0) {
         output.WriteRawTag(42);
-        output.WriteString(Signature);
+        output.WriteString(Nonce);
       }
       if (Timestamp != 0D) {
         output.WriteRawTag(49);
@@ -316,8 +316,8 @@ namespace CryptChatProtos.Responses.Message {
       if (Key.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Key);
       }
-      if (Signature.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Signature);
+      if (Nonce.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Nonce);
       }
       if (Timestamp != 0D) {
         size += 1 + 8;
@@ -357,8 +357,8 @@ namespace CryptChatProtos.Responses.Message {
       if (other.Key.Length != 0) {
         Key = other.Key;
       }
-      if (other.Signature.Length != 0) {
-        Signature = other.Signature;
+      if (other.Nonce.Length != 0) {
+        Nonce = other.Nonce;
       }
       if (other.Timestamp != 0D) {
         Timestamp = other.Timestamp;
@@ -403,7 +403,7 @@ namespace CryptChatProtos.Responses.Message {
             break;
           }
           case 42: {
-            Signature = input.ReadString();
+            Nonce = input.ReadString();
             break;
           }
           case 49: {
