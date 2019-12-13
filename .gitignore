@@ -38,4 +38,5 @@ msbuild.wrn
 
 # Configs
 config.yaml
-CryptChatServer/appsettings.json
+appsettings.json
+appsettings.Development.json
