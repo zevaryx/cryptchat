@@ -3,12 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CryptChatCore.Protos;
+using CryptChat.Server;
 using Grpc.Core;
 
-namespace CryptChatServer.Services
+using CCServer = CryptChat.Server.Server;
+
+namespace CryptChat.Server.Services
 {
-    public class ServerService : Server.ServerBase
+    public class ServerService : CCServer.ServerBase
     {
         private readonly ILogger<ServerService> _logger;
         public ServerService(ILogger<ServerService> logger)
@@ -82,6 +84,7 @@ namespace CryptChatServer.Services
             });
         }
         #endregion
+
         #region AuthService
         public override Task<SaltResponse> GetSalt(SaltRequest request, ServerCallContext context)
         {
@@ -115,6 +118,7 @@ namespace CryptChatServer.Services
             });
         }
         #endregion
+
         #region AccountService
         public override Task<ChangePasswordResponse> ChangePassword(ChangePasswordRequest request, ServerCallContext context)
         {

@@ -29,9 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CryptChatCore\CryptChatCore.csproj">
-      <Private>true</Private>
-    </ProjectReference>
+    <ProjectReference Include="..\CryptChatCore\CryptChat.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

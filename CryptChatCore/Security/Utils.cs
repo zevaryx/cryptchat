@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 using Sodium;
 
-namespace CryptChatCore.Security
+namespace CryptChat.Core.Security
 {
     /// <summary>
     /// Security utilities

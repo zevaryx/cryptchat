@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CryptChatCore.Models
+namespace CryptChat.Core.Models
 {
     class Message
     {

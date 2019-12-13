@@ -1,17 +1,27 @@
 syntax = "proto3";
 
-option csharp_namespace = "CryptChatServer.Protos";
+option csharp_namespace = "CryptChat.Server";
 
 package server;
 
-service Message {
+service Server {
 	rpc GetMessage (MessageRequest) returns (MessageResponse);
 	rpc SendMessage (SendMessageRequest) returns (SendMessageResponse);
 	rpc EditMessage (EditMessageRequest) returns (EditMessageResponse);
 	rpc DeleteMessage (DeleteMessageRequest) returns (DeleteMessageResponse);
+	rpc GetQueue (QueueRequest) returns (QueueResponse);
+	rpc GetChat (ChatRequest) returns (ChatResponse);
+	rpc GetChatList (ChatListRequest) returns (ChatListResponse);
+	rpc GetNew (NewRequest) returns (ChatListResponse);
+	rpc GetSalt (SaltRequest) returns (SaltResponse);
+	rpc Login (LoginRequest) returns (LoginResponse);
+	rpc GetUser (UserRequest) returns (UserResponse);
+	rpc Register (RegisterRequest) returns (RegisterResponse);
+	rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
 }
 
 // Requests
+// Message
 message MessageRequest {
 	string token = 1;
 	string _id = 2;
@@ -41,7 +51,59 @@ message DeleteMessageRequest {
 	string _id = 2;
 };
 
+// Chat
+message QueueRequest {
+	string token = 1;
+	string _id = 2;
+};
+
+message ChatRequest {
+	string token = 1;
+	string _id = 2;
+};
+
+message ChatListRequest {
+	string token = 1;
+};
+
+message NewRequest {
+	string token = 1;
+	string _id = 2;
+	double oldest = 3;
+};
+
+// Auth
+message SaltRequest {
+	string username = 1;
+};
+
+message LoginRequest {
+	string username = 1;
+	string hash = 2;
+};
+
+message UserRequest {
+	string username = 1;
+};
+
+message RegisterRequest {
+	string username = 1;
+	string hash = 2;
+	string pubkey = 3;
+	string salt = 4;
+};
+
+// Account
+message ChangePasswordRequest {
+	string token = 1;
+	string old_hash = 2;
+	string new_hash = 3;
+	string pubkey = 4;
+	string salt = 5;
+};
+
 // Responses
+// Message
 message MessageResponse {
 	string _id = 1;
 	string chat = 2;
@@ -75,35 +137,7 @@ message DeleteMessageResponse {
 	bool deleted = 1;
 };
 
-service Chat {
-	rpc GetQueue (QueueRequest) returns (QueueResponse);
-	rpc GetChat (ChatRequest) returns (ChatResponse);
-	rpc GetChatList (ChatListRequest) returns (ChatListResponse);
-	rpc GetNew (NewRequest) returns (ChatListResponse);
-}
-
-// Requests
-message QueueRequest {
-	string token = 1;
-	string _id = 2;
-};
-
-message ChatRequest {
-	string token = 1;
-	string _id = 2;
-};
-
-message ChatListRequest {
-	string token = 1;
-};
-
-message NewRequest {
-	string token = 1;
-	string _id = 2;
-	double oldest = 3;
-};
-
-// Responses
+// Chat
 message QueueResponse {
 	repeated string deleted = 1;
 	repeated string edited = 2;
@@ -120,35 +154,7 @@ message ChatListResponse {
 	repeated ChatResponse chats = 1;
 };
 
-service Auth {
-	rpc GetSalt (SaltRequest) returns (SaltResponse);
-	rpc Login (LoginRequest) returns (LoginResponse);
-	rpc GetUser (UserRequest) returns (UserResponse);
-	rpc Register (RegisterRequest) returns (RegisterResponse);
-}
-
-//Requests
-message SaltRequest {
-	string username = 1;
-};
-
-message LoginRequest {
-	string username = 1;
-	string hash = 2;
-};
-
-message UserRequest {
-	string username = 1;
-};
-
-message RegisterRequest {
-	string username = 1;
-	string hash = 2;
-	string pubkey = 3;
-	string salt = 4;
-};
-
-// Responses
+// Auth
 message SaltResponse {
 	string salt = 1;
 };
@@ -170,18 +176,7 @@ message RegisterResponse {
 	string token = 2;
 };
 
-service Account {
-	rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
-}
-
-message ChangePasswordRequest {
-	string token = 1;
-	string old_hash = 2;
-	string new_hash = 3;
-	string pubkey = 4;
-	string salt = 5;
-};
-
+// Account
 message ChangePasswordResponse {
 	string token = 1;
 };

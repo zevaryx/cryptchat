@@ -2,7 +2,7 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-using CryptChatCore;
+using CryptChat.Core;
 
 namespace CryptChatServerTCP
 {
@@ -25,7 +25,7 @@ namespace CryptChatServerTCP
             InitMongo();
             Logger.Info($"Starting server at {Globals.CONFIG.Server.BindIP}:{Globals.CONFIG.Server.Port}");
             //StartServer();
-            CryptChatCore.Security.Utils.LoadMemoryKey();
+            CryptChat.Core.Security.Utils.LoadMemoryKey();
             StartServer();
             /*
             foreach (var x in CryptChatProtos.Requests.Message.MessageReflection.Descriptor.MessageTypes)

@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptChatClientWin", "CryptChatClientWin\CryptChatClientWin.csproj", "{2471B2A6-9B2C-4F2D-B325-B3C02A3E0A9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptChat.Client.Win", "CryptChatClientWin\CryptChat.Client.Win.csproj", "{2471B2A6-9B2C-4F2D-B325-B3C02A3E0A9D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptChatCore", "CryptChatCore\CryptChatCore.csproj", "{B9834C8B-1929-4793-AFC8-F7C9D1C9F501}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptChatCoreTesting", "CryptChatCoreTesting\CryptChatCoreTesting.csproj", "{E2999023-728B-497B-843D-F8CED97D5670}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptChat.Core", "CryptChatCore\CryptChat.Core.csproj", "{B9834C8B-1929-4793-AFC8-F7C9D1C9F501}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptChatServerTCP", "CryptChatServerTCP\CryptChatServerTCP.csproj", "{951D0DA6-22A8-4837-B283-3A038B4A8975}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptChatServer", "CryptChatServer\CryptChatServer.csproj", "{56C4CD69-DE54-4768-92C3-C715781C6311}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptChat.Server", "CryptChatServer\CryptChat.Server.csproj", "{56C4CD69-DE54-4768-92C3-C715781C6311}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptChat.Test", "CryptChat.Test\CryptChat.Test.csproj", "{5875EA8F-0502-40FE-8577-17B155E371F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,14 +37,6 @@ Global
 		{B9834C8B-1929-4793-AFC8-F7C9D1C9F501}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B9834C8B-1929-4793-AFC8-F7C9D1C9F501}.Release|x64.ActiveCfg = Release|Any CPU
 		{B9834C8B-1929-4793-AFC8-F7C9D1C9F501}.Release|x64.Build.0 = Release|Any CPU
-		{E2999023-728B-497B-843D-F8CED97D5670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2999023-728B-497B-843D-F8CED97D5670}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2999023-728B-497B-843D-F8CED97D5670}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E2999023-728B-497B-843D-F8CED97D5670}.Debug|x64.Build.0 = Debug|Any CPU
-		{E2999023-728B-497B-843D-F8CED97D5670}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2999023-728B-497B-843D-F8CED97D5670}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E2999023-728B-497B-843D-F8CED97D5670}.Release|x64.ActiveCfg = Release|Any CPU
-		{E2999023-728B-497B-843D-F8CED97D5670}.Release|x64.Build.0 = Release|Any CPU
 		{951D0DA6-22A8-4837-B283-3A038B4A8975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{951D0DA6-22A8-4837-B283-3A038B4A8975}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{951D0DA6-22A8-4837-B283-3A038B4A8975}.Debug|x64.ActiveCfg = Debug|x64
@@ -61,6 +53,14 @@ Global
 		{56C4CD69-DE54-4768-92C3-C715781C6311}.Release|Any CPU.Build.0 = Release|Any CPU
 		{56C4CD69-DE54-4768-92C3-C715781C6311}.Release|x64.ActiveCfg = Release|Any CPU
 		{56C4CD69-DE54-4768-92C3-C715781C6311}.Release|x64.Build.0 = Release|Any CPU
+		{5875EA8F-0502-40FE-8577-17B155E371F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5875EA8F-0502-40FE-8577-17B155E371F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5875EA8F-0502-40FE-8577-17B155E371F5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5875EA8F-0502-40FE-8577-17B155E371F5}.Debug|x64.Build.0 = Debug|Any CPU
+		{5875EA8F-0502-40FE-8577-17B155E371F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5875EA8F-0502-40FE-8577-17B155E371F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5875EA8F-0502-40FE-8577-17B155E371F5}.Release|x64.ActiveCfg = Release|Any CPU
+		{5875EA8F-0502-40FE-8577-17B155E371F5}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

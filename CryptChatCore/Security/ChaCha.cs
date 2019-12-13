@@ -3,7 +3,7 @@ using System.Text;
 
 using Sodium;
 
-namespace CryptChatCore.Security
+namespace CryptChat.Core.Security
 {
     /// <summary>
     /// XChaCha management

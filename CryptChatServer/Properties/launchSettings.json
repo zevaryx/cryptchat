@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "CryptChatServer": {
+    "CryptChat.Server": {
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

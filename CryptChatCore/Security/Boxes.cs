@@ -4,7 +4,7 @@ using System.Text;
 
 using Sodium;
 
-namespace CryptChatCore.Security.Boxes
+namespace CryptChat.Core.Security.Boxes
 {
     public static class Asymmetric
     {

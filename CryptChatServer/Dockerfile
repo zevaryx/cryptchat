@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["CryptChatServer/CryptChatServer.csproj", "CryptChatServer/"]
-RUN dotnet restore "CryptChatServer/CryptChatServer.csproj"
+COPY ["CryptChatServer/CryptChat.Server.csproj", "CryptChatServer/"]
+RUN dotnet restore "CryptChatServer/CryptChat.Server.csproj"
 COPY . .
 WORKDIR "/src/CryptChatServer"
-RUN dotnet build "CryptChatServer.csproj" -c Release -o /app/build
+RUN dotnet build "CryptChat.Server.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "CryptChatServer.csproj" -c Release -o /app/publish
+RUN dotnet publish "CryptChat.Server.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "CryptChatServer.dll"]
+ENTRYPOINT ["dotnet", "CryptChat.Server.dll"]

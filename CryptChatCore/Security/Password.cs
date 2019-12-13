@@ -4,7 +4,7 @@ using System.Text;
 using System.Security.Cryptography;
 using Sodium;
 
-namespace CryptChatCore.Security
+namespace CryptChat.Core.Security
 {
     /// <summary>
     /// Password management
