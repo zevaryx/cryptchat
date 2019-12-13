@@ -17,9 +17,22 @@ namespace CryptChat.Server
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+
+        public Startup(IWebHostEnvironment env)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+            .SetBasePath(env.ContentRootPath)
+            .AddJsonFile("appsettings.json",
+                         optional: false,
+                         reloadOnChange: true)
+            .AddEnvironmentVariables();
+            
+            if (env.IsDevelopment())
+            {
+                builder.AddUserSecrets<Startup>();
+            }
+
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -28,13 +41,28 @@ namespace CryptChat.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<UsersDatabaseSettings>(
-                Configuration.GetSection(nameof(UsersDatabaseSettings))
+            services.Configure<MongoDatabaseSettings>(Configuration.GetSection(nameof(MongoDatabaseSettings)));
+            services.Configure<UsersCollectionSettings>(Configuration.GetSection(nameof(UsersCollectionSettings)));
+            services.Configure<ChatsCollectionSettings>(Configuration.GetSection(nameof(ChatsCollectionSettings)));
+            services.Configure<MessagesCollectionSettings>(Configuration.GetSection(nameof(MessagesCollectionSettings)));
+
+            services.AddSingleton<IMongoDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<MongoDatabaseSettings>>().Value
+            );
+            services.AddSingleton<IUsersCollectionSettings>(sp =>
+                sp.GetRequiredService<IOptions<UsersCollectionSettings>>().Value
+            );
+            services.AddSingleton<IChatsCollectionSettings>(sp =>
+                sp.GetRequiredService<IOptions<ChatsCollectionSettings>>().Value
+            );
+            services.AddSingleton<IMessagesCollectionSettings>(sp =>
+                sp.GetRequiredService<IOptions<MessagesCollectionSettings>>().Value
             );
 
-            services.AddSingleton<IUsersDatabaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<UsersDatabaseSettings>>().Value
-            );
+            services.AddSingleton<UserService>();
+            services.AddSingleton<ChatService>();
+            services.AddSingleton<MessageService>();
+            
             services.AddGrpc();
         }
 
@@ -44,13 +72,12 @@ namespace CryptChat.Server
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
             }
 
             app.UseRouting();
 
-            app.UseAuthentication();
-            app.UseAuthorization();
+            //app.UseAuthentication();
+            //app.UseAuthorization();
             
             app.UseEndpoints(endpoints =>
             {

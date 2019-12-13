@@ -15,12 +15,12 @@ namespace CryptChat.Server.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Chat { get; set; }
         public string message { get; set; }
-        public Dictionary<string, string> key { get; set; }
-        public string nonce { get; set; }
-        public double timestamp { get; set; }
-        public string sender { get; set; }
-        public bool edited { get; set; }
-        public double edited_at { get; set; }
-        public string file { get; set; }
+        public Dictionary<string, string> Keys { get; set; }
+        public string Nonce { get; set; }
+        public double Timestamp { get; set; }
+        public string Sender { get; set; }
+        public bool Edited { get; set; }
+        public double Edited_At { get; set; }
+        public string File { get; set; }
     }
 }

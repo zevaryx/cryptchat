@@ -9,7 +9,7 @@ namespace CryptChat.Server.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public string Username { get; set; }
-        public string PublicKey { get; set; }
+        public string Publickey { get; set; }
         public string Hash { get; set; }
         public string Salt { get; set; }
         public string Token { get; set; }

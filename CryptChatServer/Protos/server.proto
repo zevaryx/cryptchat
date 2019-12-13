@@ -89,7 +89,7 @@ message UserRequest {
 message RegisterRequest {
 	string username = 1;
 	string hash = 2;
-	string pubkey = 3;
+	string publickey = 3;
 	string salt = 4;
 };
 
@@ -98,7 +98,7 @@ message ChangePasswordRequest {
 	string token = 1;
 	string old_hash = 2;
 	string new_hash = 3;
-	string pubkey = 4;
+	string publickey = 4;
 	string salt = 5;
 };
 
@@ -147,7 +147,7 @@ message QueueResponse {
 message ChatResponse {
 	string _id = 1;
 	repeated string members = 2;
-	int32 msg_count = 3;
+	int32 message_count = 3;
 };
 
 message ChatListResponse {
@@ -162,13 +162,13 @@ message SaltResponse {
 message LoginResponse {
 	string _id = 1;
 	string username = 2;
-	string pubkey = 3;
+	string publickey = 3;
 	string token = 4;
 };
 
 message UserResponse {
 	string username = 1;
-	string pubkey = 2;
+	string publickey = 2;
 };
 
 message RegisterResponse {

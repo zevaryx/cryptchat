@@ -15,6 +15,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
     <PackageReference Include="MongoDB.Driver" Version="2.10.0" />
     <PackageReference Include="NLog" Version="4.6.8" />
+    <PackageReference Include="Ulid" Version="0.1.8" />
     <PackageReference Include="YamlDotNet" Version="8.0.0" />
   </ItemGroup>
 
