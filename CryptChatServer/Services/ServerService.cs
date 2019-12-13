@@ -222,7 +222,7 @@ namespace CryptChat.Server.Services
                 // Generate a pseudo-random fake salt if user not found
                 Random r = new Random();
                 salt = new string(Enumerable.Repeat(
-                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 24
+                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 32
                     ).Select(s => s[r.Next(s.Length)]).ToArray());
                 salt = Convert.ToBase64String(Encoding.ASCII.GetBytes(salt));
             }

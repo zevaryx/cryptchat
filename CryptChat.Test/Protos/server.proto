@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "CryptChatServer";
+option csharp_namespace = "CryptChat.Server";
 
 package server;
 
