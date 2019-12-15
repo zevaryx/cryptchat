@@ -32,7 +32,7 @@ namespace CryptChat.Core.Security
                 throw new ArgumentException($"{nameof(salt)} must be a Base64-encoded string");
             }
 
-            byte[] hash = PasswordHash.ScryptHashBinary(Encoding.ASCII.GetBytes(password), Convert.FromBase64String(salt), PasswordHash.Strength.Interactive, 128);
+            byte[] hash = PasswordHash.ScryptHashBinary(Encoding.ASCII.GetBytes(password), Convert.FromBase64String(salt), PasswordHash.Strength.Interactive, 64);
             return Convert.ToBase64String(hash);
         }
     }

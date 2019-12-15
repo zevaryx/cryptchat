@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
+
+using CryptChat.Core.Security;
 
 namespace CryptChat.Core.Models
 {
-    class Message
+    public class Message
     {
         public string ID { get; set; }
         public string Chat { get; set; }
@@ -14,28 +17,12 @@ namespace CryptChat.Core.Models
         public double Timestamp { get; set; }
         public string Sender { get; set; }
         public bool Edited { get; set; }
-        public double Edited_at { get; set; }
+        public double Edited_At { get; set; }
         public string EncryptedFile { get; set; }
+        public SecureString Plaintext { get; private set; }
 
-        public Message(
-            string id, string chat, string encryptedmessage, 
-            string encryptedkey, string nonce, double timestamp, 
-            string sender, bool edited, double edited_at, string encryptedfile
-            )
-        {
-            this.ID = id;
-            this.Chat = chat;
-            this.EncryptedMessage = encryptedmessage;
-            this.EncryptedKey = encryptedkey;
-            this.Nonce = nonce;
-            this.Timestamp = timestamp;
-            this.Sender = sender;
-            this.Edited = edited;
-            this.Edited_at = edited_at;
-            this.EncryptedFile = encryptedfile;
-        }
 
-        public string GetPlaintext(string privatekey, string publickey)
+        public void Decrypt(SecureString privatekey, string publickey)
         {
             if (!Security.Utils.IsBase64(privatekey))
             {
@@ -46,7 +33,7 @@ namespace CryptChat.Core.Models
                 throw new ArgumentException($"{nameof(publickey)} must be Base64-encoded string");
             }
             var key = Security.Boxes.Asymmetric.Decrypt(EncryptedKey, privatekey, publickey, Nonce);
-            return Security.Boxes.Symmetric.Decrypt(EncryptedMessage, key, Nonce);
+            Plaintext = Security.Boxes.Symmetric.Decrypt(EncryptedMessage, key, Nonce);                
         }
     }
 }
