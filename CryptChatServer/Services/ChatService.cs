@@ -11,12 +11,12 @@ namespace CryptChat.Server.Services
     {
         private readonly IMongoCollection<Chat> _chats;
 
-        public ChatService(IMongoDatabaseSettings dbsettings, IUsersCollectionSettings settings)
+        public ChatService(IMongoDatabaseSettings dbsettings, IChatsCollectionSettings settings)
         {
             var client = new MongoClient(dbsettings.ConnectionString);
             var database = client.GetDatabase(dbsettings.DatabaseName);
 
-            _chats = database.GetCollection<Chat>(settings.UsersCollectionName);
+            _chats = database.GetCollection<Chat>(settings.ChatsCollectionName);
         }
 
         public List<Chat> Get() =>

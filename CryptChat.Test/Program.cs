@@ -16,8 +16,8 @@ namespace CryptChat.Test
     class Program
     {
 
-        static List<Message> messages;
-
+        static List<Message> messages = new List<Message>();
+        static Dictionary<string, string> keylist = new Dictionary<string, string>();
 
         private static User user;
         static string currentPrompt = "> ";
@@ -27,13 +27,24 @@ namespace CryptChat.Test
         static GrpcChannel channel;
         static Server.Server.ServerClient client;
         static string LoginMenu = @"
+
 [L]ogin
 [R]egister
 [Q]uit
 ";
         static string MainMenu = @"
+
 [M]essages
-[N]ew message
+[C]hats
+[L]ogout
+[Q]uit
+";
+        static string MsgMenu = @"
+
+[S]ync Messages
+[N]ew Message
+[V]iew Messages
+[B]ack
 [Q]uit
 ";
         static async Task Main(string[] args)
@@ -47,7 +58,6 @@ namespace CryptChat.Test
             //Console.WriteLine(unlocked);
             //Console.WriteLine(locked);
             //_ = Console.ReadKey();
-            Login();
             MainLoop();
         }
 
@@ -82,9 +92,9 @@ namespace CryptChat.Test
         {
             while (!loggedIn && running)
             {
-                Console.WriteLine(currentMenu);
+                Console.WriteLine(LoginMenu);
                 Console.Write(currentPrompt);
-                ConsoleKeyInfo input = Console.ReadKey();
+                var input = Console.ReadKey();
                 if (input.Key == ConsoleKey.Q)
                     running = false;
                 else if (input.Key == ConsoleKey.L)
@@ -93,6 +103,7 @@ namespace CryptChat.Test
                     string username = Console.ReadLine();
                     Console.Write("Enter Password: ");
                     string password = MaskedInput();
+                    Console.WriteLine();
                     var salt = client.GetSalt(new SaltRequest { Username = username });
                     string hash = Password.HashPassword(password, salt.Salt);
                     LoginResponse success;
@@ -104,10 +115,13 @@ namespace CryptChat.Test
                             Username = success.Username,
                             Id = success.Id,
                             Token = success.Token,
-                            PublicKey = success.Pubkey
+                            PublicKey = success.Publickey
                         };
                         user.LoadPrivateKey(password);
                         password = string.Empty;
+                        Console.WriteLine($"\nLogged in as {user.Username}");
+                        currentPrompt = user.Username + " > ";
+                        loggedIn = true;
                     }
                     catch (RpcException e)
                     {
@@ -141,7 +155,7 @@ namespace CryptChat.Test
                         {
                             Salt = salt,
                             Hash = hash,
-                            Pubkey = user.PublicKey,
+                            Publickey = user.PublicKey,
                             Username = username
                         });
                         user.Id = response.Id;
@@ -149,6 +163,7 @@ namespace CryptChat.Test
                         registered = true;
                         user.SavePrivateKey(password);
                         loggedIn = true;
+                        currentPrompt = user.Username + " > ";
                     }
                     catch (RpcException e)
                     {
@@ -161,13 +176,138 @@ namespace CryptChat.Test
 
         }
 
+        static void NewMessage()
+        {
+            try
+            {
+                Console.Write("\nRecipient: ");
+                var other_username = Console.ReadLine();
+                var recipient = client.GetUser(new UserRequest()
+                {
+                    Username = other_username
+                });
+                Console.Write("Message: ");
+                var message = Console.ReadLine();
+                if (string.IsNullOrEmpty(message))
+                {
+                    Console.WriteLine("Empty message are not allowed.");
+                    return;
+                }
+                using SecureString key = Core.Security.Boxes.Symmetric.GenerateKey();
+                var rec_key_enc = Core.Security.Boxes.Asymmetric.Encrypt(key, user.PrivateKey, recipient.Publickey);
+                var send_key_enc = Core.Security.Boxes.Asymmetric.Encrypt(key, user.PrivateKey, user.PublicKey);
+                var msg_enc = Core.Security.Boxes.Symmetric.Encrypt(message, key);
+                SendMessageRequest new_message = new SendMessageRequest()
+                {
+
+                    Token = user.Token,
+                    Message = msg_enc["crypt"],
+                    Nonce = msg_enc["nonce"],
+                    Recipient = other_username,
+                    Sender = user.Username,
+                };
+                new_message.Keys.Add(other_username, $"{rec_key_enc["nonce"]}:{rec_key_enc["crypt"]}");
+                new_message.Keys.Add(user.Username, $"{send_key_enc["nonce"]}:{send_key_enc["crypt"]}");
+
+                //Console.WriteLine(new_message);
+
+                var message_request = client.SendMessage(new_message);
+
+                var msg = new Message()
+                {
+                    ID = message_request.Id,
+                    Chat = message_request.Chat,
+                    EncryptedKey = $"{send_key_enc["nonce"]}:{send_key_enc["crypt"]}",
+                    EncryptedMessage = msg_enc["crypt"],
+                    Nonce = msg_enc["nonce"],
+                    Sender = user.Username,
+                    Timestamp = message_request.Timestamp
+                };
+
+                msg.Decrypt(user.PrivateKey, user.PublicKey);
+
+                messages.Add(msg);
+
+                Console.WriteLine("Message sent");
+            }
+            catch (RpcException e)
+            {
+                Console.WriteLine($"\n\n{e.Status.StatusCode}: {e.Status.Detail}");
+            }
+        }
+
+        static void SyncMessages()
+        {
+            Console.WriteLine("\nGetting messages...");
+            var msgs = client.GetAllMessages(new SyncRequest() { Token = user.Token });
+            foreach (var message in msgs.Messages)
+            {
+                if (!messages.Exists(m => m.ID == message.Id))
+                    messages.Add(new Message()
+                    {
+                        ID = message.Id, 
+                        Chat = message.Chat, 
+                        Edited = message.Edited, 
+                        Edited_At = message.EditedAt, 
+                        EncryptedFile = message.File, 
+                        EncryptedKey = message.Key, 
+                        EncryptedMessage = message.Message, 
+                        Nonce = message.Nonce, 
+                        Sender = message.Sender, 
+                        Timestamp = message.Timestamp
+                    });
+                if (!keylist.ContainsKey(message.Sender))
+                {
+                    var sender = client.GetUser(new UserRequest() { Username = message.Sender });
+                    keylist.Add(message.Sender, sender.Publickey);
+                }
+            }
+            Console.WriteLine("Decrypting...");
+            messages.ForEach(m => m.Decrypt(user.PrivateKey, keylist[m.Sender]));
+            Console.WriteLine("Messages synced");
+        }
+
+        static void MessageMenu()
+        {
+            bool inMenu = true;
+            while (running && inMenu)
+            {
+                Console.WriteLine(MsgMenu);
+                Console.Write(currentPrompt);
+                var input = Console.ReadKey();
+                if (input.Key == ConsoleKey.N)
+                    NewMessage();
+                if (input.Key == ConsoleKey.S)
+                    SyncMessages();
+                if (input.Key == ConsoleKey.Q)
+                    running = false;
+                if (input.Key == ConsoleKey.B)
+                    inMenu = false;
+            }
+        }
+
         static void MainLoop()
         {
             while (running)
             {
-                Console.WriteLine("Press any key to exit.....");
-                Console.ReadKey();
-                running = false;
+                if (!loggedIn)
+                    Login();
+                else
+                {
+                    Console.WriteLine(MainMenu);
+                    Console.Write(currentPrompt);
+                    var input = Console.ReadKey();
+                    if (input.Key == ConsoleKey.Q)
+                        running = false;
+                    if (input.Key == ConsoleKey.L)
+                    {
+                        user = null;
+                        loggedIn = false;
+                        currentPrompt = "> ";
+                    }
+                    if (input.Key == ConsoleKey.M)
+                        MessageMenu();
+                }
             }
         }
     }

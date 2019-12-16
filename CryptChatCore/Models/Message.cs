@@ -32,7 +32,7 @@ namespace CryptChat.Core.Models
             {
                 throw new ArgumentException($"{nameof(publickey)} must be Base64-encoded string");
             }
-            var key = Security.Boxes.Asymmetric.Decrypt(EncryptedKey, privatekey, publickey, Nonce);
+            using SecureString key = Security.Boxes.Asymmetric.Decrypt(EncryptedKey.Split(':')[1], privatekey, publickey, EncryptedKey.Split(':')[0]);
             Plaintext = Security.Boxes.Symmetric.Decrypt(EncryptedMessage, key, Nonce);                
         }
     }

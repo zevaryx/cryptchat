@@ -35,6 +35,7 @@ namespace CryptChat.Core.Security
     public sealed class SecureString : IDisposable
     {
         private bool disposed = false;
+        private bool wasBytes = false;
         private byte[] _data;
         private byte[] _nonce = SecretBox.GenerateNonce();
         private byte[] _key = SecretBox.GenerateKey();
@@ -48,11 +49,27 @@ namespace CryptChat.Core.Security
             return new SecureString(data);
         }
 
+        public static implicit operator SecureString(byte[] data)
+        {
+            if (data == null || data.Length == 0)
+                return null;
+            SecureString n = new SecureString(Convert.ToBase64String(data));
+            n.wasBytes = true;
+            return n;
+        }
+
         public static implicit operator string(SecureString secure)
         {
             if (secure == null)
                 return null;
             return secure.ToString();
+        }
+
+        public static implicit operator byte[](SecureString secure)
+        {
+            if (secure.wasBytes)
+                return Convert.FromBase64String(secure.ToString());
+            return Encoding.UTF8.GetBytes(secure);
         }
 
         public override string ToString()

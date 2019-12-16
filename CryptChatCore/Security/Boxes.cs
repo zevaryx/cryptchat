@@ -51,12 +51,12 @@ namespace CryptChat.Core.Security.Boxes
             byte[] crypt_bytes;
 
             if (Utils.IsBase64(nonce))
-                nonce_bytes = Encoding.ASCII.GetBytes(nonce);
+                nonce_bytes = Convert.FromBase64String(nonce);
             else
                 throw new ArgumentException($"{nameof(nonce)} must be a Base64-encoded string");
 
             if (Utils.IsBase64(crypt))
-                crypt_bytes = Encoding.ASCII.GetBytes(crypt);
+                crypt_bytes = Convert.FromBase64String(crypt);
             else
                 throw new ArgumentException($"{nameof(crypt)} must be a Base64-encoded string");
 
@@ -113,12 +113,12 @@ namespace CryptChat.Core.Security.Boxes
             byte[] crypt_bytes;
 
             if (Utils.IsBase64(nonce))
-                nonce_bytes = Encoding.ASCII.GetBytes(nonce);
+                nonce_bytes = Convert.FromBase64String(nonce);
             else
                 throw new ArgumentException($"{nameof(nonce)} must be a Base64-encoded string");
 
             if (Utils.IsBase64(crypt))
-                crypt_bytes = Encoding.ASCII.GetBytes(crypt);
+                crypt_bytes = Convert.FromBase64String(crypt);
             else
                 throw new ArgumentException($"{nameof(crypt)} must be a Base64-encoded string");
 

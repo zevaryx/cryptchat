@@ -25,6 +25,12 @@ namespace CryptChat.Server.Services
         public Message Get(string id) =>
             _messages.Find<Message>(message => message.Id == id).FirstOrDefault();
 
+        public List<Message> GetUserMessages(string id) =>
+            _messages.Find<Message>(message => message.Keys.ContainsKey(id)).ToList();
+
+        public List<Message> GetChatMessages(string id) =>
+            _messages.Find<Message>(message => message.Chat == id).ToList();
+
         public Message Create(Message message)
         {
             _messages.InsertOne(message);

@@ -6,6 +6,7 @@ package server;
 
 service Server {
 	rpc GetMessage (MessageRequest) returns (MessageResponse);
+	rpc GetAllMessages (SyncRequest) returns (MessageListResponse);
 	rpc SendMessage (SendMessageRequest) returns (SendMessageResponse);
 	rpc EditMessage (EditMessageRequest) returns (EditMessageResponse);
 	rpc DeleteMessage (DeleteMessageRequest) returns (DeleteMessageResponse);
@@ -25,6 +26,10 @@ service Server {
 message MessageRequest {
 	string token = 1;
 	string _id = 2;
+};
+
+message SyncRequest {
+	string token = 1;
 };
 
 message SendMessageRequest {

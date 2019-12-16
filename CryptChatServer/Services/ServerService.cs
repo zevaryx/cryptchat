@@ -20,13 +20,15 @@ namespace CryptChat.Server.Services
         private readonly MessageService _messageService;
         private readonly ILogger<ServerService> _logger;
 
-        private double? ToEpoch(DateTime? dateTime) => dateTime.HasValue ? (double?)ToEpoch(dateTime.Value) : null;
+        private double? ToEpoch(DateTimeOffset dateTime) => dateTime.ToUnixTimeSeconds();
+
         public ServerService(ILogger<ServerService> logger, UserService userService, ChatService chatService, MessageService messageService)
         {
             _logger = logger;
             _userService = userService;
             _chatService = chatService;
             _messageService = messageService;
+
         }
 
         #region MessageService
@@ -52,7 +54,9 @@ namespace CryptChat.Server.Services
 
             if (!message.Keys.Keys.Contains(user.Id))
                 throw new RpcException(new Status(StatusCode.PermissionDenied, "Unable to access message"));
-            
+
+            var sender = _userService.Get(message.Sender);
+
             return Task.FromResult(new MessageResponse
             {
                 Id = message.Id, 
@@ -63,9 +67,40 @@ namespace CryptChat.Server.Services
                 Key = message.Keys.First(x => x.Key == user.Id).Value, 
                 Message = message.message, 
                 Nonce = message.Nonce, 
-                Sender = message.Sender, 
+                Sender = sender.Username, 
                 Timestamp = message.Timestamp
             });
+        }
+
+        public override Task<MessageListResponse> GetAllMessages(SyncRequest request, ServerCallContext context)
+        {
+            User user = _userService.GetFromToken(request.Token);
+
+            if (user == null)
+                throw new RpcException(new Status(StatusCode.Unauthenticated, "Could not validate token"));
+
+            List<Message> messages = _messageService.GetUserMessages(user.Id);
+
+            MessageListResponse response = new MessageListResponse();
+            foreach (Message message in messages)
+            {
+                var sender = _userService.Get(message.Sender);
+                response.Messages.Add(new MessageResponse()
+                {
+                    Id = message.Id,
+                    Chat = message.Chat,
+                    Edited = message.Edited,
+                    EditedAt = message.Edited_At,
+                    File = message.File,
+                    Key = message.Keys.First(x => x.Key == user.Id).Value,
+                    Message = message.message,
+                    Nonce = message.Nonce,
+                    Sender = sender.Username,
+                    Timestamp = message.Timestamp
+                });
+            }
+
+            return Task.FromResult(response);
         }
 
         public override Task<SendMessageResponse> SendMessage(SendMessageRequest request, ServerCallContext context)
@@ -80,10 +115,13 @@ namespace CryptChat.Server.Services
                 throw new RpcException(new Status(StatusCode.Unauthenticated, "Could not validate token"));
 
             Chat chat;
+
             if (string.IsNullOrEmpty(request.Chat))
                 chat = _chatService.GetFromUsers(new string[] { sender.Id, recipient.Id });
             else
                 chat = _chatService.Get(request.Chat);
+
+            bool created = false;
 
             if (chat == null)
             {
@@ -91,29 +129,37 @@ namespace CryptChat.Server.Services
                 {
                     Id = new BsonObjectId(ObjectId.GenerateNewId()).ToString(),
                     Members = new string[] { sender.Id, recipient.Id },
-                    MessageCount = 0,
+                    MessageCount = 1,
                     Queue = new Dictionary<string, ChatQueue>()
                 };
                 _chatService.Create(chat);
+                created = true;
             }
+
+            var tstamp = ToEpoch(DateTimeOffset.UtcNow) ?? 0.0;
 
             Message message = new Message()
             {
                 message = request.Message,
                 Keys = new Dictionary<string, string>(),
                 Nonce = request.Nonce,
-                Chat = chat.Id, 
-                Id = new BsonObjectId(ObjectId.GenerateNewId()).ToString(), 
-                Edited = false, 
-                Edited_At = -1.0, 
-                File = request.File, 
-                Sender = sender.Id, 
-                Timestamp = ToEpoch(DateTime.UtcNow) ?? 0
+                Chat = chat.Id,
+                Id = new BsonObjectId(ObjectId.GenerateNewId()).ToString(),
+                Edited = false,
+                Edited_At = -1.0,
+                File = request.File,
+                Sender = sender.Id,
+                Timestamp = tstamp
             };
+            request.Keys.ToList().ForEach(x => message.Keys.Add((x.Key == sender.Username ? sender.Id : recipient.Id), x.Value));
 
-            request.Keys.ToList().ForEach(x => message.Keys.Add(x.Key, x.Value));
+            _messageService.Create(message);
 
-            _messageService.Create(message);           
+            if (!created)
+            {
+                chat.MessageCount++;
+                _chatService.Update(chat.Id, chat);
+            }
 
             return Task.FromResult(new SendMessageResponse
             {

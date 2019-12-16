@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptChat.Server", "CryptCh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptChat.Test", "CryptChat.Test\CryptChat.Test.csproj", "{5875EA8F-0502-40FE-8577-17B155E371F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptChat.Client.TUI", "CryptChat.Client.TUI\CryptChat.Client.TUI.csproj", "{5212BDE7-6188-4DF6-9D19-1B630BAF29AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,14 @@ Global
 		{5875EA8F-0502-40FE-8577-17B155E371F5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5875EA8F-0502-40FE-8577-17B155E371F5}.Release|x64.ActiveCfg = Release|Any CPU
 		{5875EA8F-0502-40FE-8577-17B155E371F5}.Release|x64.Build.0 = Release|Any CPU
+		{5212BDE7-6188-4DF6-9D19-1B630BAF29AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5212BDE7-6188-4DF6-9D19-1B630BAF29AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5212BDE7-6188-4DF6-9D19-1B630BAF29AA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5212BDE7-6188-4DF6-9D19-1B630BAF29AA}.Debug|x64.Build.0 = Debug|Any CPU
+		{5212BDE7-6188-4DF6-9D19-1B630BAF29AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5212BDE7-6188-4DF6-9D19-1B630BAF29AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5212BDE7-6188-4DF6-9D19-1B630BAF29AA}.Release|x64.ActiveCfg = Release|Any CPU
+		{5212BDE7-6188-4DF6-9D19-1B630BAF29AA}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
