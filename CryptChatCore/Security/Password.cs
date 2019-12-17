@@ -9,7 +9,7 @@ namespace CryptChat.Core.Security
     /// <summary>
     /// Password management
     /// </summary>
-    public class Password
+    public static class Password
     {
         public static string GenerateSalt()
         {

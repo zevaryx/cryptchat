@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CryptChat.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace CryptChatClientWin
+namespace CryptChat.Client.Win
 {
     /// <summary>
     /// Interaction logic for App.xaml

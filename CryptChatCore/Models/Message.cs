@@ -35,5 +35,16 @@ namespace CryptChat.Core.Models
             using SecureString key = Security.Boxes.Asymmetric.Decrypt(EncryptedKey.Split(':')[1], privatekey, publickey, EncryptedKey.Split(':')[0]);
             Plaintext = Security.Boxes.Symmetric.Decrypt(EncryptedMessage, key, Nonce);                
         }
+
+        public override string ToString()
+        {
+            DateTime tstamp = DateTimeOffset.FromUnixTimeSeconds((long)Timestamp).DateTime.ToLocalTime();
+            var sb = new StringBuilder();
+            sb.Append($"   Sender: {Sender}");
+            sb.Append($"\nTimestamp: {tstamp}");
+            if (!string.IsNullOrEmpty(Plaintext))
+                sb.Append($"\n  Message: {Plaintext}");
+            return sb.ToString();
+        }
     }
 }

@@ -102,7 +102,7 @@ namespace CryptChat.Test
                     Console.Write("\nEnter Username: ");
                     string username = Console.ReadLine();
                     Console.Write("Enter Password: ");
-                    string password = MaskedInput();
+                    SecureString password = MaskedInput();
                     Console.WriteLine();
                     var salt = client.GetSalt(new SaltRequest { Username = username });
                     string hash = Password.HashPassword(password, salt.Salt);
@@ -118,7 +118,7 @@ namespace CryptChat.Test
                             PublicKey = success.Publickey
                         };
                         user.LoadPrivateKey(password);
-                        password = string.Empty;
+                        password.Dispose();
                         Console.WriteLine($"\nLogged in as {user.Username}");
                         currentPrompt = user.Username + " > ";
                         loggedIn = true;
@@ -133,7 +133,7 @@ namespace CryptChat.Test
                     Console.Write("\nEnter Username: ");
                     string username = Console.ReadLine();
                     Console.Write("Enter Password: ");
-                    string password = MaskedInput();
+                    SecureString password = MaskedInput();
                     Console.Write("\nConfirm Password: ");
                     if (MaskedInput() != password)
                     {
@@ -162,6 +162,7 @@ namespace CryptChat.Test
                         user.Token = response.Token;
                         registered = true;
                         user.SavePrivateKey(password);
+                        password.Dispose();
                         loggedIn = true;
                         currentPrompt = user.Username + " > ";
                     }
@@ -267,6 +268,11 @@ namespace CryptChat.Test
             Console.WriteLine("Messages synced");
         }
 
+        static void ViewMessages()
+        {
+            messages.ForEach(m => Console.WriteLine($"\n{m.ToString()}"));
+        }
+
         static void MessageMenu()
         {
             bool inMenu = true;
@@ -283,6 +289,8 @@ namespace CryptChat.Test
                     running = false;
                 if (input.Key == ConsoleKey.B)
                     inMenu = false;
+                if (input.Key == ConsoleKey.V)
+                    ViewMessages();
             }
         }
 
