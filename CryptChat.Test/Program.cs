@@ -49,7 +49,7 @@ namespace CryptChat.Test
 ";
         static async Task Main(string[] args)
         {
-            channel = GrpcChannel.ForAddress("https://localhost:5001");
+            channel = GrpcChannel.ForAddress("https://cryptchat.dragonfirecomputing.com:5001");
             client = new Server.Server.ServerClient(channel);
             currentMenu = LoginMenu;
             // Let's test memory locking

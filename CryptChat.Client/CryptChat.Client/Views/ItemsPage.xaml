@@ -13,6 +13,8 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout>
+        <Button x:Name="GetSalt" Text="Get Salt for zevaryx" Clicked="GetSalt_Clicked"/>
+        <Label x:Name="SaltValue" Text="Salt will appear here eventually..." />
         <ListView x:Name="ItemsListView"
                 ItemsSource="{Binding Items}"
                 VerticalOptions="FillAndExpand"
@@ -28,8 +30,6 @@
                     <x:String>Second Item</x:String>
                     <x:String>Third Item</x:String>
                     <x:String>Fourth Item</x:String>
-                    <x:String>Fifth Item</x:String>
-                    <x:String>Sixth Item</x:String>
                 </x:Array>
             </d:ListView.ItemsSource>
             <ListView.ItemTemplate>

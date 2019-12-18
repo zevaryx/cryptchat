@@ -10,6 +10,8 @@ using Xamarin.Forms.Xaml;
 using CryptChat.Client.Models;
 using CryptChat.Client.Views;
 using CryptChat.Client.ViewModels;
+using CryptChat.Server;
+using Grpc.Core;
 
 namespace CryptChat.Client.Views
 {
@@ -50,6 +52,19 @@ namespace CryptChat.Client.Views
 
             if (viewModel.Items.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
+        }
+
+        private void GetSalt_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var salt = App.client.GetSalt(new SaltRequest { Username = "zevaryx" });
+                SaltValue.Text = salt.Salt;
+            }
+            catch (RpcException ex)
+            {
+                SaltValue.Text = $"Failed to connect to server\n{ex.Status.StatusCode}: {ex.Status.Detail}";
+            }
         }
     }
 }
