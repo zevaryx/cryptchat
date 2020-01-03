@@ -6,25 +6,37 @@ package server;
 
 service Server {
 	rpc GetMessage (MessageRequest) returns (MessageResponse);
+	rpc GetAllMessages (SyncRequest) returns (stream MessageResponse);
 	rpc SendMessage (SendMessageRequest) returns (SendMessageResponse);
 	rpc EditMessage (EditMessageRequest) returns (EditMessageResponse);
 	rpc DeleteMessage (DeleteMessageRequest) returns (DeleteMessageResponse);
 	rpc GetQueue (QueueRequest) returns (QueueResponse);
 	rpc GetChat (ChatRequest) returns (ChatResponse);
-	rpc GetChatList (ChatListRequest) returns (ChatListResponse);
-	rpc GetNew (NewRequest) returns (ChatListResponse);
+	rpc GetChatList (ChatListRequest) returns (stream ChatResponse);
+	rpc GetNew (NewRequest) returns (stream ChatResponse);
 	rpc GetSalt (SaltRequest) returns (SaltResponse);
 	rpc Login (LoginRequest) returns (LoginResponse);
 	rpc GetUser (UserRequest) returns (UserResponse);
 	rpc Register (RegisterRequest) returns (RegisterResponse);
 	rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
+	rpc Notifications (NotifSubscribe) returns (stream MessageResponse);
 }
+
+// Notifications
+message NotifSubscribe {
+	string token = 1;
+	string cid = 2;
+};
 
 // Requests
 // Message
 message MessageRequest {
 	string token = 1;
 	string _id = 2;
+};
+
+message SyncRequest {
+	string token = 1;
 };
 
 message SendMessageRequest {
@@ -89,7 +101,7 @@ message UserRequest {
 message RegisterRequest {
 	string username = 1;
 	string hash = 2;
-	string pubkey = 3;
+	string publickey = 3;
 	string salt = 4;
 };
 
@@ -98,7 +110,7 @@ message ChangePasswordRequest {
 	string token = 1;
 	string old_hash = 2;
 	string new_hash = 3;
-	string pubkey = 4;
+	string publickey = 4;
 	string salt = 5;
 };
 
@@ -147,7 +159,7 @@ message QueueResponse {
 message ChatResponse {
 	string _id = 1;
 	repeated string members = 2;
-	int32 msg_count = 3;
+	int32 message_count = 3;
 };
 
 message ChatListResponse {
@@ -162,13 +174,13 @@ message SaltResponse {
 message LoginResponse {
 	string _id = 1;
 	string username = 2;
-	string pubkey = 3;
+	string publickey = 3;
 	string token = 4;
 };
 
 message UserResponse {
 	string username = 1;
-	string pubkey = 2;
+	string publickey = 2;
 };
 
 message RegisterResponse {

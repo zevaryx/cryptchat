@@ -6,20 +6,27 @@ package server;
 
 service Server {
 	rpc GetMessage (MessageRequest) returns (MessageResponse);
-	rpc GetAllMessages (SyncRequest) returns (MessageListResponse);
+	rpc GetAllMessages (SyncRequest) returns (stream MessageResponse);
 	rpc SendMessage (SendMessageRequest) returns (SendMessageResponse);
 	rpc EditMessage (EditMessageRequest) returns (EditMessageResponse);
 	rpc DeleteMessage (DeleteMessageRequest) returns (DeleteMessageResponse);
 	rpc GetQueue (QueueRequest) returns (QueueResponse);
 	rpc GetChat (ChatRequest) returns (ChatResponse);
-	rpc GetChatList (ChatListRequest) returns (ChatListResponse);
-	rpc GetNew (NewRequest) returns (ChatListResponse);
+	rpc GetChatList (ChatListRequest) returns (stream ChatResponse);
+	rpc GetNew (NewRequest) returns (stream ChatResponse);
 	rpc GetSalt (SaltRequest) returns (SaltResponse);
 	rpc Login (LoginRequest) returns (LoginResponse);
 	rpc GetUser (UserRequest) returns (UserResponse);
 	rpc Register (RegisterRequest) returns (RegisterResponse);
 	rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
+	rpc Notifications (NotifSubscribe) returns (stream MessageResponse);
 }
+
+// Notifications
+message NotifSubscribe {
+	string token = 1;
+	string cid = 2;
+};
 
 // Requests
 // Message

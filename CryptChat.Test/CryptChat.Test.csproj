@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CryptChatCore\CryptChat.Core.csproj" />
+    <ProjectReference Include="..\CryptChat.Core\CryptChat.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Protobuf Include="protos\server.proto" GrpcServices="Client" />

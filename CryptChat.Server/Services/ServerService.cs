@@ -31,6 +31,10 @@ namespace CryptChat.Server.Services
 
         }
 
+        #region NotificationService
+
+        #endregion
+
         #region MessageService
         public override Task<MessageResponse> GetMessage(MessageRequest request, ServerCallContext context)
         {
@@ -72,7 +76,7 @@ namespace CryptChat.Server.Services
             });
         }
 
-        public override Task<MessageListResponse> GetAllMessages(SyncRequest request, ServerCallContext context)
+        public override async Task GetAllMessages(SyncRequest request, IServerStreamWriter<MessageResponse> responseStream, ServerCallContext context)
         {
             User user = _userService.GetFromToken(request.Token);
 
@@ -80,12 +84,10 @@ namespace CryptChat.Server.Services
                 throw new RpcException(new Status(StatusCode.Unauthenticated, "Could not validate token"));
 
             List<Message> messages = _messageService.GetUserMessages(user.Id);
-
-            MessageListResponse response = new MessageListResponse();
             foreach (Message message in messages)
             {
                 var sender = _userService.Get(message.Sender);
-                response.Messages.Add(new MessageResponse()
+                var response = new MessageResponse
                 {
                     Id = message.Id,
                     Chat = message.Chat,
@@ -97,10 +99,10 @@ namespace CryptChat.Server.Services
                     Nonce = message.Nonce,
                     Sender = sender.Username,
                     Timestamp = message.Timestamp
-                });
-            }
+                };
 
-            return Task.FromResult(response);
+                await responseStream.WriteAsync(response);
+            }
         }
 
         public override Task<SendMessageResponse> SendMessage(SendMessageRequest request, ServerCallContext context)
@@ -226,26 +228,41 @@ namespace CryptChat.Server.Services
             return Task.FromResult(response);
         }
 
-        public override Task<ChatListResponse> GetChatList(ChatListRequest request, ServerCallContext context)
+        public override async Task GetChatList(ChatListRequest request, IServerStreamWriter<ChatResponse> responseStream, ServerCallContext context)
         {
             User user = _userService.GetFromToken(request.Token);
             if (user == null)
                 throw new RpcException(new Status(StatusCode.Unauthenticated, "Could not validate token"));
             List<Chat> chats = _chatService.GetUserChats(user.Id);
-            return Task.FromResult(CreateResponse(chats));
+            foreach (Chat c in chats)
+            {
+                ChatResponse cr = new ChatResponse
+                {
+                    Id = c.Id, 
+                    MessageCount = c.MessageCount
+                };
+                cr.Members.AddRange(c.Members);
+                await responseStream.WriteAsync(cr);
+            }
         }
 
-        public override Task<ChatListResponse> GetNew(NewRequest request, ServerCallContext context)
+        public override async Task GetNew(NewRequest request, IServerStreamWriter<ChatResponse> responseStream, ServerCallContext context)
         {
             throw new RpcException(new Status(StatusCode.Unimplemented, "Cannot get new messages at this time"));
             User user = _userService.GetFromToken(request.Token);
             if (user == null)
                 throw new RpcException(new Status(StatusCode.Unauthenticated, "Could not validate token"));
             List<Chat> chats = _chatService.GetUserChats(user.Id);
-            return Task.FromResult(new ChatListResponse
+            foreach (Chat c in chats)
             {
-
-            });
+                ChatResponse cr = new ChatResponse
+                {
+                    Id = c.Id,
+                    MessageCount = c.MessageCount
+                };
+                cr.Members.AddRange(c.Members);
+                await responseStream.WriteAsync(cr);
+            }
         }
 
         public override Task<QueueResponse> GetQueue(QueueRequest request, ServerCallContext context)

@@ -49,7 +49,7 @@ namespace CryptChat.Test
 ";
         static async Task Main(string[] args)
         {
-            channel = GrpcChannel.ForAddress("https://cryptchat.dragonfirecomputing.com:5001");
+            channel = GrpcChannel.ForAddress("https://localhost:5001");
             client = new Server.Server.ServerClient(channel);
             currentMenu = LoginMenu;
             // Let's test memory locking
@@ -59,6 +59,11 @@ namespace CryptChat.Test
             //Console.WriteLine(locked);
             //_ = Console.ReadKey();
             MainLoop();
+        }
+
+        static async Task BackgroundListener()
+        {
+
         }
 
         static string MaskedInput()
@@ -237,11 +242,11 @@ namespace CryptChat.Test
             }
         }
 
-        static void SyncMessages()
+        static async void SyncMessages()
         {
             Console.WriteLine("\nGetting messages...");
             var msgs = client.GetAllMessages(new SyncRequest() { Token = user.Token });
-            foreach (var message in msgs.Messages)
+            await foreach (var message in msgs.ResponseStream.ReadAllAsync())
             {
                 if (!messages.Exists(m => m.ID == message.Id))
                     messages.Add(new Message()
