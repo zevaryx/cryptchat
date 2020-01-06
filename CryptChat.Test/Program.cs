@@ -36,6 +36,7 @@ namespace CryptChat.Test
 
 [M]essages
 [C]hats
+[A]ccount
 [L]ogout
 [Q]uit
 ";
@@ -244,7 +245,7 @@ namespace CryptChat.Test
 
         static async void SyncMessages()
         {
-            Console.WriteLine("\nGetting messages...");
+            //Console.WriteLine("\nGetting messages...");
             var msgs = client.GetAllMessages(new SyncRequest() { Token = user.Token });
             await foreach (var message in msgs.ResponseStream.ReadAllAsync())
             {
@@ -267,10 +268,11 @@ namespace CryptChat.Test
                     var sender = client.GetUser(new UserRequest() { Username = message.Sender });
                     keylist.Add(message.Sender, sender.Publickey);
                 }
+                messages[^1].Decrypt(user.PrivateKey, keylist[messages[^1].Sender]);
             }
-            Console.WriteLine("Decrypting...");
-            messages.ForEach(m => m.Decrypt(user.PrivateKey, keylist[m.Sender]));
-            Console.WriteLine("Messages synced");
+            //Console.WriteLine("Decrypting...");
+            //messages.ForEach(m => m.Decrypt(user.PrivateKey, keylist[m.Sender]));
+            //Console.WriteLine("Messages synced");
         }
 
         static void ViewMessages()

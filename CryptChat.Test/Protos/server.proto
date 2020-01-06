@@ -19,11 +19,11 @@ service Server {
 	rpc GetUser (UserRequest) returns (UserResponse);
 	rpc Register (RegisterRequest) returns (RegisterResponse);
 	rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
-	rpc Notifications (NotifSubscribe) returns (stream MessageResponse);
+	rpc Subscribe (NotifSubscribe) returns (stream MessageResponse);
 }
 
 // Notifications
-message NotifSubscribe {
+message Subscription {
 	string token = 1;
 	string cid = 2;
 };

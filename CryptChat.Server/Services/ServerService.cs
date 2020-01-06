@@ -1,15 +1,19 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Core;
 
 using CryptChat.Server;
 using CryptChat.Server.Models;
+using CryptChat.Core.Utils.DataTypes;
 using CCServer = CryptChat.Server.Server;
 using MongoDB.Bson;
 using System.Text;
+using System.Threading.Tasks.Dataflow;
 
 namespace CryptChat.Server.Services
 {
@@ -19,6 +23,10 @@ namespace CryptChat.Server.Services
         private readonly ChatService _chatService;
         private readonly MessageService _messageService;
         private readonly ILogger<ServerService> _logger;
+
+        private Dictionary<string, IServerStreamWriter<QueueResponse>> _clients = new Dictionary<string, IServerStreamWriter<QueueResponse>>();
+        private Dictionary<string, BufferBlock<QueueResponse>> _buffers = new Dictionary<string, BufferBlock<QueueResponse>>();
+        private Dictionary<string, List<string>> _cidLookup = new Dictionary<string, List<string>>();
 
         private double? ToEpoch(DateTimeOffset dateTime) => dateTime.ToUnixTimeSeconds();
 
@@ -31,7 +39,25 @@ namespace CryptChat.Server.Services
 
         }
 
-        #region NotificationService
+        #region SubscriptionService
+
+        public override async Task Subscribe(Subscription subscription, IServerStreamWriter<QueueResponse> responseStream, ServerCallContext context)
+        {
+            _clients.Add(subscription.Cid, responseStream);
+            if (!_buffers.ContainsKey(subscription.Token))
+                _buffers.Add(subscription.Token, new BufferBlock<QueueResponse>());
+
+            if (!_cidLookup.ContainsKey(subscription.Token))
+                _cidLookup.Add(subscription.Token, new List<string>());
+
+            _cidLookup[subscription.Token].Add(subscription.Cid);
+
+            while (_clients.ContainsKey(subscription.Cid))
+            {
+                var @event = await _buffers[subscription.Token].ReceiveAsync();
+                
+            }
+        }
 
         #endregion
 
